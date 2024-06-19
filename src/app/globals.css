@@ -1,0 +1,15 @@
+.main-container
+{
+  position: relative;
+  left: 300px;
+  top: 240px;
+  width: 60%;
+}
+.main-container h1{
+  font-weight: bold;
+  font-size: 50px;
+  background: linear-gradient(90deg, #a53a1f, #2851ac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

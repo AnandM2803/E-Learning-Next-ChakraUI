@@ -11,6 +11,7 @@ import {
   VStack,
   Text,
   Heading,
+  Image,
 } from "@chakra-ui/react";
 import { FaShare } from "react-icons/fa";
 import { MdOutlineSaveAlt } from "react-icons/md";
@@ -223,8 +224,9 @@ const ReactProjectDescription = ({ children }) => {
                   <p>
                     Learn React JS, the popular JavaScript library for building
                     user interfaces. This course covers all the basics,
-                    including components, state, and props. By the end, you'll
-                    be able to build dynamic and responsive web applications.
+                    including components, state, and props. By the end,
+                    you&apos;ll be able to build dynamic and responsive web
+                    applications.
                   </p>
                 </TabPanel>
                 <TabPanel
@@ -284,7 +286,7 @@ const ReactProjectDescription = ({ children }) => {
             </Box>
             <Flex alignItems="center" rowGap="5px">
               <Box mr={2}>
-                <img
+                <Image
                   src="/profile2.jpg"
                   alt="profile image"
                   style={{

@@ -1,4 +1,3 @@
-// Import necessary modules
 "use client";
 import React from "react";
 import ReactPlayer from "react-player";
@@ -11,18 +10,11 @@ import { useSearchParams } from "next/navigation";
 const VideoPlayer = () => {
   const searchparams = useSearchParams();
   const courseId = searchparams.get("id");
+  const chapter = searchparams.get("chapter");
   const course = Courses.find((course) => course.id === courseId);
 
-  // Array of video links
-  const videoLinks = [
-    "https://www.youtube.com/watch?v=qz0aGYrrlhU",
-    "https://www.youtube.com/watch?v=HD13eq_Pmp8",
-    "https://www.youtube.com/watch?v=FQdaUv95mR8",
-  ];
-
-  // Select the lecture based on search params or default to course link
-  // const selectedLecture =
-  //   videoLinks[Number(searchParams.lecture) - 1] || course?.courseLink;
+  const selectedLecture =
+    course.chapterVideoLinks[Number(chapter) - 1] || course.videoUrl;
 
   // If no lecture is selected or available, display text
   // if (!selectedLecture) {
@@ -32,7 +24,7 @@ const VideoPlayer = () => {
   // Render ReactPlayer with selected lecture URL
   return (
     <ReactPlayer
-      url={course.videoUrl}
+      url={selectedLecture}
       width={"100%"}
       height={"100%"}
       controls={true}

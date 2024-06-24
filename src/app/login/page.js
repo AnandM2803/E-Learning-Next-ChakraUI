@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Box,
@@ -11,7 +11,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import {useRouter} from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 function Login() {
   const router = useRouter();
@@ -38,7 +38,8 @@ function Login() {
     if (!data.password.trim()) {
       validationError.password = "Password is required";
     } else if (!/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(data.password)) {
-      validationError.password = "Password length should be 6 characters long and contain at least one letter and one number";
+      validationError.password =
+        "Password length should be 6 characters long and contain at least one letter and one number";
     }
 
     setError(validationError);
@@ -49,13 +50,15 @@ function Login() {
       });
 
       alert("Logged in Successfully");
-      router.push('/screeningpage');
+      router.push("/screeningpage");
     }
   };
 
   return (
     <Grid placeItems="center" h="100vh" bg="#F3F7EC">
-      <Text fontSize="30px" fontWeight="bold">Login</Text>
+      <Text fontSize="30px" fontWeight="bold">
+        Login
+      </Text>
       <form
         style={{
           backgroundColor: "#DAD3BE",
@@ -136,7 +139,7 @@ function Login() {
         bottom="110px"
         fontWeight="bold"
       >
-        Don't have an account?
+        Don&apos;t have an account?
       </Link>
     </Grid>
   );

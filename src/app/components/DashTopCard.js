@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { Box, VStack, Text, Button, Center, Image } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';

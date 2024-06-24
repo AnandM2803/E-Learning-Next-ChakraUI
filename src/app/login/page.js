@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Text,
@@ -55,17 +54,19 @@ function Login() {
   };
 
   return (
-    <Grid placeItems="center" h="100vh" bg="#F3F7EC">
-      <Text fontSize="30px" fontWeight="bold">
+    <Grid placeItems="center" h="97vh" bg="#F3F7EC"  p={{ base: 4, md: 8 }}> 
+      <Text fontSize="30px" fontWeight="bold"  p={{ base: 4, md: 8 }}>
         Login
       </Text>
       <form
         style={{
           backgroundColor: "#DAD3BE",
-          padding: "50px",
+          padding: "40px",
           borderRadius: "30px",
           boxShadow: "5px 4px black",
+          marginBottom:"40px"
         }}
+        p={{ base: 4, md: 8 }}
         onSubmit={handleSubmit}
       >
         <FormControl mt={8}>
@@ -118,6 +119,9 @@ function Login() {
         </FormControl>
         <FormControl mt={10} align="center">
           <Button
+            fontSize={{ base: "1rem", md: "1.2rem" }}
+            px={{ base: 4, md: 6 }}
+            py={{ base: 2, md: 3 }}
             type="submit"
             cursor="pointer"
             w="100px"
@@ -126,21 +130,21 @@ function Login() {
             color="white"
             boxShadow="5px 4px black"
             backgroundColor="teal"
+            m={{ base: 2, md: 4 }} 
           >
             Login
           </Button>
         </FormControl>
-      </form>
-      <Link
+        <Link
         href="/signup"
         color="black"
-        position="relative"
-        left="6px"
-        bottom="110px"
+        padding='10px'
         fontWeight="bold"
       >
         Don&apos;t have an account?
       </Link>
+      </form>
+     
     </Grid>
   );
 }

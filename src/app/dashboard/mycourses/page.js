@@ -8,7 +8,9 @@ const CourseCard = ({ id,name, ratings, courseFees, author, image, description }
   
   return (
     <Link href={`/dashboard/mycourses/coursedetails?id=${id}`}>
-    <Box borderWidth="1px" borderRadius="15px" boxShadow="2px 2px 2px 2px" width="180px" p="1" height="220px" mr='8px'>
+    <Box borderWidth="1px" borderRadius="15px" boxShadow="2px 2px 2px 2px" width="180px" p="1" height="220px" mr='8px'  templateColumns={{sm:'repeat(2,1fr)',
+      md:'repeat(3,1fr)',lg:'repeat(4,1fr)'
+    }}>
       <Image src={image} alt={name} maxWidth="100%" height="80px" borderRadius="md" ml='2px' />
 
       <VStack align="start" spacing={1} mt="2">

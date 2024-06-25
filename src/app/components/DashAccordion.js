@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { ChakraProvider, Box, Flex, Image, Text, Icon } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
@@ -10,21 +11,21 @@ const Accordion = ({ profilePic, name, children }) => {
   };
 
   return (
-    <Box border="1px" borderColor="gray.200" borderRadius="md" marginBottom="4" width="auto"> 
+    <Box border="1px" borderColor="gray.200" borderRadius="md" marginBottom="4" width="auto">
       <Flex
         alignItems="center"
         backgroundColor="gray.100"
-        padding="2"
+        padding={{ base: '1', md: '2' }} 
         cursor="pointer"
         onClick={toggleAccordion}
       >
         <Box rounded="full" overflow="hidden" marginRight="2">
-          <Image src={profilePic} alt="Profile Picture" boxSize="29px" objectFit="cover" />
+          <Image src={profilePic} alt="Profile Picture" boxSize={{ base: '20px', md: '29px' }} objectFit="cover" />
         </Box>
-        <Text fontWeight="bold">{name}</Text>
+        <Text fontWeight="bold" fontSize={{ base: 'md', md: 'lg' }}>{name}</Text> 
         <Icon as={isActive ? ChevronDownIcon : ChevronRightIcon} marginLeft="auto" />
       </Flex>
-      {isActive && <Box padding="2">{children}</Box>}
+      {isActive && <Box padding={{ base: '1', md: '2' }}>{children}</Box>} 
     </Box>
   );
 };
@@ -32,7 +33,7 @@ const Accordion = ({ profilePic, name, children }) => {
 const DashAccordion = () => {
   return (
     <ChakraProvider>
-      <div style={{ width: "100%", height:'50%'}}> 
+      <Box width="100%" height="auto"> 
         <Accordion profilePic="/profile1.jpg" name="John Doe">
           <p>Content for section 1.</p>
         </Accordion>
@@ -42,7 +43,7 @@ const DashAccordion = () => {
         <Accordion profilePic="/profile3.jpg" name="Michael Johnson">
           <p>Content for section 3.</p>
         </Accordion>
-      </div>
+      </Box>
     </ChakraProvider>
   );
 };

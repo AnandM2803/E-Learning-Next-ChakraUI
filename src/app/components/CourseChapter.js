@@ -1,9 +1,18 @@
 "use client";
 import React, { useState } from "react";
-import { ChakraProvider, Box, Flex, Text, Icon, Link, Stack } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Box,
+  Flex,
+  Text,
+  Icon,
+  Link as ChakraLink,
+  Stack,
+} from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { usePathname, useSearchParams } from "next/navigation";
 import { PiVideoFill } from "react-icons/pi";
+import Courses from "../../../public/courselist";
 
 const Accordion = ({ chapterName, children }) => {
   const [isActive, setIsActive] = useState(false);
@@ -27,15 +36,17 @@ const Accordion = ({ chapterName, children }) => {
         cursor="pointer"
         onClick={toggleAccordion}
       >
-        <Text fontWeight="bold" ml="130px">
-          {chapterName}
-        </Text>
+        <Text fontWeight="bold">{chapterName}</Text>
         <Icon
           as={isActive ? ChevronDownIcon : ChevronRightIcon}
           marginLeft="auto"
         />
       </Flex>
-      {isActive && <Box padding="2"><Stack spacing={2}>{children}</Stack></Box>}
+      {isActive && (
+        <Box padding="2">
+          <Stack spacing={2}>{children}</Stack>
+        </Box>
+      )}
     </Box>
   );
 };
@@ -43,6 +54,9 @@ const Accordion = ({ chapterName, children }) => {
 const CourseChapter = () => {
   const pathName = usePathname();
   const id = useSearchParams().get("id");
+  const searchparams=useSearchParams();
+  const selecteCourse=Courses.find((courses) =>courses.id===searchparams.get('id'));
+
   const scrollbarwidthset = {
     "&::-webkit-scrollbar": {
       width: "3px",
@@ -51,61 +65,143 @@ const CourseChapter = () => {
       backgroundColor: "black",
     },
   };
+
   return (
     <ChakraProvider>
       <Box
         width="100%"
-        height="55vh"
-        overflowY="auto"
-        padding="4"
+        height={{ base: "auto", md: "55vh" }} 
+        overflowY={{ base: "visible", md: "auto" }}
+        padding={{ base: "2", md: "4" }}
         css={scrollbarwidthset}
       >
-        <Accordion chapterName="Chapter 1">
-          <Link href={`${pathName}?id=${id}&chapter=1`}> <Flex alignItems='center'><PiVideoFill /><Text>Watch Chapter 1</Text></Flex></Link>
-          <Link href={`${pathName}?id=${id}&chapter=2`}><Flex alignItems='center'><PiVideoFill /><Text>Watch Chapter 2</Text></Flex></Link>
+        <Accordion chapterName={selecteCourse.chapter1Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=1`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter1VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 2">
-          <Link href={`${pathName}?id=${id}&chapter=2`}>Watch Chapter 2</Link>
+        <Accordion chapterName={selecteCourse.chapter2Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=2`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter2VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 3">
-          <Link href={`${pathName}?id=${id}&chapter=3`}>Watch Chapter 3</Link>
+        <Accordion chapterName={selecteCourse.chapter3Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=3`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"  
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter3VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 4">
-          <Link href={`${pathName}?id=${id}&chapter=4`}>Watch Chapter 4</Link>
+        <Accordion chapterName={selecteCourse.chapter4Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=4`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter4VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 5">
-          <Link href={`${pathName}?id=${id}&chapter=5`}>Watch Chapter 5</Link>
+        <Accordion chapterName={selecteCourse.chapter5Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=5`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter5VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 6">
-          <Link href={`${pathName}?id=${id}&chapter=6`}>Watch Chapter 6</Link>
+        <Accordion chapterName={selecteCourse.chapter6Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=6`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter6VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 7">
-          <Link href={`${pathName}?id=${id}&chapter=7`}>Watch Chapter 7</Link>
+        <Accordion chapterName={selecteCourse.chapter7Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=7`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter7VideoName}</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 8">
-          <Link href={`${pathName}?id=${id}&chapter=8`}>Watch Chapter 8</Link>
+        <Accordion chapterName={selecteCourse.chapter8Name}>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=8`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">{selecteCourse.chapter8VideoName}</Text>
+          </ChakraLink>
         </Accordion>
         <Accordion chapterName="Chapter 9">
-          <Link href={`${pathName}?id=${id}&chapter=9`}>Watch Chapter 9</Link>
+          <ChakraLink
+            href={`${pathName}?id=${id}&chapter=9`}
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: "none", color: "blue.500" }}
+            backgroundColor="#fff"
+            borderRadius="8px"
+            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+          >
+            <PiVideoFill />
+            <Text ml="2">Watch Chapter 9</Text>
+          </ChakraLink>
         </Accordion>
-        <Accordion chapterName="Chapter 10">
-          <Link href={`${pathName}?id=${id}&chapter=10`}>Watch Chapter 10</Link>
-        </Accordion>
-        <Accordion chapterName="Chapter 11">
-          <Link href={`${pathName}?id=${id}&chapter=11`}>Watch Chapter 11</Link>
-        </Accordion>
-        <Accordion chapterName="Chapter 12">
-          <Link href={`${pathName}?id=${id}&chapter=12`}>Watch Chapter 12</Link>
-        </Accordion>
-        <Accordion chapterName="Chapter 13">
-          <Link href={`${pathName}?id=${id}&chapter=13`}>Watch Chapter 13</Link>
-        </Accordion>
-        <Accordion chapterName="Chapter 14">
-          <Link href={`${pathName}?id=${id}&chapter=14`}>Watch Chapter 14</Link>
-        </Accordion>
-        <Accordion chapterName="Chapter 15">
-          <Link href={`${pathName}?id=${id}&chapter=15`}>Watch Chapter 15</Link>
-        </Accordion>
+        
       </Box>
     </ChakraProvider>
   );

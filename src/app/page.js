@@ -28,6 +28,7 @@ function Home() {
           as="h1"
           fontSize={{ base: "2xl", md: "3xl" }}
           mb={{ base: 4, md: 8 }}
+          padding='8px'
         >
           Discover a World of Knowledge with [Your E-Learning Platform&apos;s
           Name]

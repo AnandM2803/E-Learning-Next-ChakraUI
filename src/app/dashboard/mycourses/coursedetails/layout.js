@@ -50,8 +50,17 @@ const ReactProjectDescription = ({ children }) => {
 
   return (
     <Box p={4} position="relative" bg="#F9FBE7" h="90vh">
-      <Flex columnGap="20px" h="100%">
-        <VStack w="60%" align="start" spacing={4} h="100%">
+      <Flex
+        columnGap="20px"
+        h="100%"
+        flexDirection={{ base: "column", md: "row" }}
+      >
+        <VStack
+          w={{ base: "100%", md: "60%" }}
+          align="start"
+          spacing={4}
+          h="100%"
+        >
           <Flex flexDirection="column" alignItems="start" w="100%" h="100%">
             <Flex mb={1} alignItems="center" width="100%" h="fit-content">
               <Box flex="1">
@@ -91,7 +100,7 @@ const ReactProjectDescription = ({ children }) => {
                     borderRadius="20px"
                     p={2}
                     backgroundColor="white"
-                    width="400px"
+                    width="300px"
                   >
                     <Flex alignItems="center">
                       <Box flex="1">
@@ -138,10 +147,10 @@ const ReactProjectDescription = ({ children }) => {
               </Flex>
             </Flex>
 
-            <Box width="100%" height="315" mt={0}>
+            <Box width="100%" height="315px" mt={0}>
               {children}
             </Box>
-
+            {/* Tab List  */}
             <Tabs
               index={tabIndex}
               onChange={(index) => setTabIndex(index)}
@@ -154,6 +163,7 @@ const ReactProjectDescription = ({ children }) => {
                 borderBottom="1px solid gray"
                 display="flex"
                 columnGap={"40px"}
+                flexWrap={{ base: "wrap", md: "nowrap" }}
               >
                 <Tab
                   _selected={{
@@ -221,58 +231,40 @@ const ReactProjectDescription = ({ children }) => {
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>
-                    Learn React JS, the popular JavaScript library for building
-                    user interfaces. This course covers all the basics,
-                    including components, state, and props. By the end,
-                    you&apos;ll be able to build dynamic and responsive web
-                    applications.
-                  </p>
+                  <p>{selectedcourse.tabCourseDescription}</p>
                 </TabPanel>
                 <TabPanel
                   backgroundColor="#fff"
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>
-                    This course has received positive feedback for its clear
-                    explanations and practical examples. Students appreciate the
-                    hands-on approach and the comprehensive coverage of key
-                    React concepts. Many find it a valuable resource for both
-                    beginners and intermediate developers.
-                  </p>
+                  <p>{selectedcourse.tabCourseReviewe}</p>
                 </TabPanel>
                 <TabPanel
                   backgroundColor="#fff"
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>
-                    Engage with fellow learners in our discussion forums. Share
-                    your projects, ask questions, and collaborate on challenges.
-                    This is a great opportunity to deepen your understanding and
-                    network with other React enthusiasts.
-                  </p>
+                  <p>{selectedcourse.tabCourseDiscussion}</p>
                 </TabPanel>
                 <TabPanel
                   backgroundColor="#fff"
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>
-                    Access a curated list of additional resources including
-                    documentation, tutorials, and tools to enhance your learning
-                    experience. These resources are designed to help you
-                    continue learning and stay updated with the latest in React
-                    development.
-                  </p>
+                  <p>{selectedcourse.tabCourseResources}</p>
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </Flex>
         </VStack>
-
-        <VStack w="38%" spacing={4} align="start">
+        {/* about course  */}
+        <VStack
+          w={{ base: "100%", md: "38%" }}
+          spacing={4}
+          align="start"
+          mt={{ base: 4, md: 0 }}
+        >
           <Box
             backgroundColor="#fff"
             borderRadius="8px"
@@ -302,13 +294,12 @@ const ReactProjectDescription = ({ children }) => {
                   {selectedcourse.profName}
                 </Box>
                 <Box fontSize="13px" color="black">
-                  A React course teaches the essentials of building dynamic user
-                  interfaces with React.js, emphasizing component-based
-                  architecture and state management techniques.
+                  {selectedcourse.aboutCourseDescription}
                 </Box>
               </Box>
             </Flex>
           </Box>
+          {/* course Completion  */}
           <Box
             w="100%"
             backgroundColor="#fff"

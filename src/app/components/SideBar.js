@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from "react";
-import { Box, VStack, Link } from "@chakra-ui/react";
+import { Box, VStack, Link, useMediaQuery } from "@chakra-ui/react";
 
 import { MdSpaceDashboard } from "react-icons/md";
 import { SiCoursera } from "react-icons/si";
@@ -17,13 +17,14 @@ import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
 
   const boxcontainer = {
-    w: isVisible ? "220px" : "80px",
+    w: isVisible && !isMobile ? "220px" : "80px",
     h: "100vh",
     bg: "#BFFDFD",
     color: "black",
@@ -60,7 +61,7 @@ const SideBar = () => {
             <Link href="/dashboard" display='flex'>
               <MdSpaceDashboard size="17"  />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard">Dashboard</Link>
               </Box>
@@ -71,7 +72,7 @@ const SideBar = () => {
             <Link href="/dashboard/courses">
             <SiCoursera />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/courses">Courses</Link>
               </Box>
@@ -82,7 +83,7 @@ const SideBar = () => {
             <Link href="/dashboard/exams">
             <PiExamFill />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/exams">Exams</Link>
               </Box>
@@ -94,7 +95,7 @@ const SideBar = () => {
             <Link href="/dashboard/training">
             <MdModelTraining />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/training">Training</Link>
               </Box>
@@ -105,7 +106,7 @@ const SideBar = () => {
             <Link href="/dashboard/mycourses">
             <FaDiscourse />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/mycourses">My Courses</Link>
               </Box>
@@ -118,7 +119,7 @@ const SideBar = () => {
             <Link href="/dashboard/myprogress">
             <GiProgression />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/myprogress">My Progress</Link>
               </Box>
@@ -129,7 +130,7 @@ const SideBar = () => {
             <Link href="/dashboard/getcertificate">
             <PiCertificateFill />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/getcertificate">Get Certificate</Link>
               </Box>
@@ -140,7 +141,7 @@ const SideBar = () => {
             <Link href="/dashboard/subscription">
             <PiSubtitlesFill />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/subscription">Subscription</Link>
               </Box>
@@ -154,7 +155,7 @@ const SideBar = () => {
             <Link href="#">
               <ImProfile />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="#">Profile</Link>
               </Box>
@@ -165,7 +166,7 @@ const SideBar = () => {
             <Link href="#">
               <IoMdLogOut />
             </Link>
-            {isVisible && (
+            {isVisible && !isMobile && (
               <Box>
                 <Link href="#">Logout</Link>
               </Box>

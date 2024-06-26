@@ -54,23 +54,22 @@ function Login() {
   };
 
   return (
-    <Grid placeItems="center" h="97vh" bg="#F3F7EC"  p={{ base: 4, md: 8 }}> 
-      <Text fontSize="30px" fontWeight="bold"  p={{ base: 4, md: 8 }}>
+    <Grid placeItems="center" h="97vh" bg="#F3F7EC" p={{ base: 4, md: 8 }}>
+      <Text fontSize="30px" fontWeight="bold" mt={60}>
         Login
       </Text>
       <form
         style={{
           backgroundColor: "#DAD3BE",
-          padding: "40px",
+          padding: "20px",
           borderRadius: "30px",
           boxShadow: "5px 4px black",
-          marginBottom:"40px"
+          marginBottom: "120px",
         }}
-        p={{ base: 4, md: 8 }}
         onSubmit={handleSubmit}
       >
-        <FormControl mt={8}>
-          <FormLabel htmlFor="email">Email</FormLabel>
+        <FormControl mt={4}>
+          <FormLabel htmlFor="email" p={5}>Email</FormLabel>
           <Input
             value={data.email}
             id="email"
@@ -93,8 +92,8 @@ function Login() {
             </Text>
           )}
         </FormControl>
-        <FormControl mt={8}>
-          <FormLabel htmlFor="password">Password</FormLabel>
+        <FormControl mt={4}>
+          <FormLabel htmlFor="password" p={5}>Password</FormLabel>
           <Input
             value={data.password}
             id="password"
@@ -117,7 +116,7 @@ function Login() {
             </Text>
           )}
         </FormControl>
-        <FormControl mt={10} align="center">
+        <FormControl mt={6} align="center">
           <Button
             fontSize={{ base: "1rem", md: "1.2rem" }}
             px={{ base: 4, md: 6 }}
@@ -130,23 +129,19 @@ function Login() {
             color="white"
             boxShadow="5px 4px black"
             backgroundColor="teal"
-            m={{ base: 2, md: 4 }} 
+            p={8}
+            m={{ base: 2, md: 4 }}
           >
             Login
           </Button>
         </FormControl>
-        <Link
-        href="/signup"
-        color="black"
-        padding='10px'
-        fontWeight="bold"
-      >
-        Don&apos;t have an account?
-      </Link>
+        <Link href="/signup" color="black" padding="10px" fontWeight="bold" mt='10px' paddingTop='10px'>
+          Don't have an account?
+        </Link>
       </form>
-     
     </Grid>
   );
 }
 
 export default Login;
+

@@ -23,6 +23,10 @@ import {
   AiOutlineSortDescending,
 } from "react-icons/ai";
 import Courses from "../../../../public/courselist";
+// import { useAppDispatch } from "@/app/hooks/reduxHooks";
+import { addEnrolledCourses,removeEnrolledCourses } from "@/lib/enrolledCourse/enrolledCourse";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const RotatedIconButton = chakra(IconButton, {
   baseStyle: {
@@ -31,6 +35,7 @@ const RotatedIconButton = chakra(IconButton, {
 });
 
 const CourseCard = ({
+  id,
   name,
   ratings,
   courseFees,
@@ -38,6 +43,12 @@ const CourseCard = ({
   image,
   description,
 }) => {
+
+  
+const dispatch=useDispatch();
+const handleEnrollClick=()=>{
+  dispatch(addEnrolledCourses(id))
+}
   const formattedFees =
     courseFees === "0"
       ? "Free"
@@ -95,7 +106,7 @@ const CourseCard = ({
         <Text fontSize="xs" color="black">
           By {author}
         </Text>
-        <Button size="xs" colorScheme="teal" mt="2px">
+        <Button size="xs" colorScheme="teal" mt="2px" onClick={()=>handleEnrollClick()}>
           Enroll
         </Button>
       </VStack>
@@ -182,6 +193,7 @@ const CourseCards = () => {
         {sortedCourses.map((course, index) => (
           <WrapItem key={index}>
             <CourseCard
+            id={course.id}
               name={course.name}
               ratings={course.ratings}
               courseFees={course.courseFees}

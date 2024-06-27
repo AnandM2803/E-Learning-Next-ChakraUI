@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from "react";
-import { Box, VStack, Link, useMediaQuery } from "@chakra-ui/react";
+import { Box, VStack, useMediaQuery } from "@chakra-ui/react";
+import Link from "next/link";
 
 import { MdSpaceDashboard } from "react-icons/md";
 import { SiCoursera } from "react-icons/si";

@@ -3,9 +3,10 @@ import { Box, Heading, Text, Image, HStack, VStack, Button, Wrap, WrapItem } fro
 import Link from "next/link";
 import Courses from "../../../../public/courselist";
 import { AiFillStar } from 'react-icons/ai';
+import { useSelector } from "react-redux";
 
 const CourseCard = ({ id,name, ratings, courseFees, author, image, description }) => {
-  
+ 
   return (
     <Link href={`/dashboard/mycourses/coursedetails?id=${id}`}>
     <Box borderWidth="1px" borderRadius="15px" boxShadow="2px 2px 2px 2px" width="180px" p="1" height="220px" mr='8px'  templateColumns={{sm:'repeat(2,1fr)',
@@ -32,9 +33,18 @@ const CourseCard = ({ id,name, ratings, courseFees, author, image, description }
 };
 
 const MyCourses = () => {
+  const enrolledCourseCards=useSelector((state)=>state.courses.enrolledCourses)
+  let selectedCourse=[];
+  Courses.forEach((courses)=>{
+    if(enrolledCourseCards.includes(courses.id))
+      {
+        selectedCourse.push(courses)
+      }
+  })
+  console.log(enrolledCourseCards)
   return (
     <Wrap spacing={8} mt={1} justify="center" overflowX="auto" maxW="80vw">
-      {Courses.map((course, index) => (
+      {selectedCourse.map((course, index) => (
         <WrapItem key={index}>
           <CourseCard
           id={course.id}

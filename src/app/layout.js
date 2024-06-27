@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import StoreProvider from "./StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" type="image/x-icon" href="/images.ico"></link>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}><StoreProvider>{children}</StoreProvider></body>
     </html>
   );
 }

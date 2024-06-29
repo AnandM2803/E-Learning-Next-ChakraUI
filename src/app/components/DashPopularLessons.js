@@ -1,6 +1,7 @@
 'use client'
-import { Box, Text, Link, Button, Image, useMediaQuery } from '@chakra-ui/react';
+import { Box, Text, Button, Image, useMediaQuery } from '@chakra-ui/react';
 import { FaCircle } from 'react-icons/fa';
+import Link from 'next/link'
 
 function DashPopularLessons() {
     const [isTablet] = useMediaQuery('(max-width: 768px)');
@@ -43,7 +44,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Enroll Now</Button>
+                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -74,7 +75,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} fontSize='12px' height={'28px'}>Enroll Now</Button>
+                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} fontSize='12px' height={'28px'}>Visit</Button>
                         </Box>
                     </Box>
                 </Box>
@@ -108,7 +109,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Enroll Now</Button>
+                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button>
                         </Box>
                     </Box>
                 </Box>

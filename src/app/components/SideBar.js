@@ -26,11 +26,8 @@ const SideBar = () => {
 
   const boxcontainer = {
     w: isVisible && !isMobile ? "220px" : "80px",
-    h: "100vh",
     bg: "#BFFDFD",
-    color: "black",
-    p: "4px",
-    transition: "width 0.3s ease"
+    color: "black"
   };
 
   const hamburgerStyles = {
@@ -45,7 +42,7 @@ const SideBar = () => {
   };
 
   return (
-    <Box sx={boxcontainer}>
+    <Box sx={boxcontainer} id="maincontainer">
       <Box 
         color="black" 
         position="relative" 
@@ -56,7 +53,7 @@ const SideBar = () => {
       >
         <GiHamburgerMenu />
       </Box>
-      <VStack align="start" fontSize="17px" className={styles.sidelink} mt="100px">
+      <VStack align="start" fontSize="17px" className={styles.sidelink} mt="100px" id="vstackcontainer">
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" alignItems="center" justifyContent="start" columnGap="5px">
             <Link href="/dashboard" display='flex'>

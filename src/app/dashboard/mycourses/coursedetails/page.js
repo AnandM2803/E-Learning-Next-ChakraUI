@@ -1,11 +1,10 @@
-"use client";
-import React from "react";
+'use client'
+import React, { Suspense } from "react";
 import ReactPlayer from "react-player";
 import { Text } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import Courses from "../../../../../public/courselist";
 import { useSearchParams } from "next/navigation";
-
 
 const VideoPlayer = () => {
   const searchparams = useSearchParams();
@@ -27,6 +26,12 @@ const VideoPlayer = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(VideoPlayer), {
+const VideoPlayerWithSuspense = () => (
+  <Suspense fallback={<Text>Loading...</Text>}>
+    <VideoPlayer />
+  </Suspense>
+);
+
+export default dynamic(() => Promise.resolve(VideoPlayerWithSuspense), {
   ssr: false,
 });

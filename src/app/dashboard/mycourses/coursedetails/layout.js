@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react"; 
 import {
   Box,
   Flex,
@@ -13,43 +13,29 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
-import { FaShare } from "react-icons/fa";
+
 import { MdOutlineSaveAlt } from "react-icons/md";
 import { useSearchParams } from "next/navigation";
 import Courses from "../../../../../public/courselist";
 import CourseChapter from "@/app/components/CourseChapter";
+import ShareIcon from "../shareicons/ShareIcons";
 
 const ReactProjectDescription = ({ children }) => {
   const [tabIndex, setTabIndex] = useState(0);
   const [showShareBox, setShowShareBox] = useState(false);
   const [copyButtonText, setCopyButtonText] = useState("Copy");
   const searchparams = useSearchParams();
+
   const selectedcourse = Courses.find(
     (course) => course.id === searchparams.get("id")
   );
-
-  const toggleShareBox = () => {
-    setShowShareBox(!showShareBox);
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(selectedcourse.videoUrl);
-    setCopyButtonText("Copied");
-    setTimeout(() => {
-      setCopyButtonText("Copy");
-    }, 3000);
-  };
-
-  const closeShareBox = () => {
-    setShowShareBox(false);
-  };
 
   if (!selectedcourse) {
     return <Heading>Nothing to See</Heading>;
   }
 
   return (
-    <Box p={4} position="relative" bg="#F9FBE7" h="90vh">
+    <Box p={4} position="relative" bg="#F9FBE7">
       <Flex
         columnGap="20px"
         h="100%"
@@ -72,85 +58,14 @@ const ReactProjectDescription = ({ children }) => {
                 </Box>
               </Box>
               <Flex position="relative">
-                <FaShare
-                  size="20px"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: "20px",
-                    borderRadius: "50%",
-                  }}
-                  onClick={toggleShareBox}
-                />
-                <MdOutlineSaveAlt
-                  size="20px"
-                  style={{
-                    cursor: "pointer",
-                    marginRight: "20px",
-                    borderRadius: "50%",
-                  }}
-                />
-
-                {showShareBox && (
-                  <Box
-                    position="absolute"
-                    top="100%"
-                    transform="translateX(-100%)"
-                    zIndex="1"
-                    border="1px solid gray.800"
-                    borderRadius="20px"
-                    p={2}
-                    backgroundColor="white"
-                    width="300px"
-                  >
-                    <Flex alignItems="center">
-                      <Box flex="1">
-                        <input
-                          type="text"
-                          value={selectedcourse.videoUrl}
-                          readOnly
-                          style={{
-                            width: "100%",
-                            border: "none",
-                            backgroundColor: "transparent",
-                            fontSize: "14px",
-                          }}
-                        />
-                      </Box>
-                      <Box ml={2}>
-                        <button
-                          onClick={copyToClipboard}
-                          style={{
-                            cursor: "pointer",
-                            padding: "8px 12px",
-                            backgroundColor: "#46C2CB",
-                            color: "white",
-                            border: "none",
-                            borderRadius: "5px 15px",
-                          }}
-                        >
-                          {copyButtonText}
-                        </button>
-                        <span
-                          onClick={closeShareBox}
-                          style={{
-                            cursor: "pointer",
-                            marginLeft: "8px",
-                            fontSize: "18px",
-                          }}
-                        >
-                          &#10006;
-                        </span>
-                      </Box>
-                    </Flex>
-                  </Box>
-                )}
+                <ShareIcon></ShareIcon>
               </Flex>
             </Flex>
-
+            {/* video component */}
             <Box width="100%" height="315px" mt={0}>
               {children}
             </Box>
-            {/* Tab List  */}
+            {/* Tab List */}
             <Tabs
               index={tabIndex}
               onChange={(index) => setTabIndex(index)}
@@ -258,7 +173,7 @@ const ReactProjectDescription = ({ children }) => {
             </Tabs>
           </Flex>
         </VStack>
-        {/* about course  */}
+        {/* about course */}
         <VStack
           w={{ base: "100%", md: "38%" }}
           spacing={4}
@@ -299,7 +214,7 @@ const ReactProjectDescription = ({ children }) => {
               </Box>
             </Flex>
           </Box>
-          {/* course Completion  */}
+          {/* course Completion */}
           <Box
             w="100%"
             backgroundColor="#fff"
@@ -317,4 +232,10 @@ const ReactProjectDescription = ({ children }) => {
   );
 };
 
-export default ReactProjectDescription;
+const ReactProjectDescriptionWrapper = (props) => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <ReactProjectDescription {...props} />
+  </Suspense>
+);
+
+export default ReactProjectDescriptionWrapper;

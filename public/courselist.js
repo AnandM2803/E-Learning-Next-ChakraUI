@@ -5,8 +5,7 @@ const Courses = [
     ratings: "4.5",
     courseFees: "1699",
     author: "John Doe",
-    image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlBBlCksDczWtQnf0044rrssLOAo6VIm1bLtGvxu-a5Pw-hLuK",
+    image:"/webdevelopmentcard.jpg",
     description: "Learn the fundamentals of Web Development.",
     videoUrl: "https://www.youtube.com/embed/z0n1aQ3IxWI?si=bMNZvsGC-HmcqJCy",
     chapterVideoLinks: [
@@ -51,8 +50,7 @@ const Courses = [
     ratings: "4.7",
     courseFees: "999",
     author: "Jane Smith",
-    image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTVqMAtt9vjMvacAoelfW8Tp5zdlIVW6z5dwFEbebfpIz_6JxMq",
+    image: "/nextcard.jpg",
     description: "Take your Next.js skills to the next level. ",
     videoUrl: "https://www.youtube.com/embed/e-3UPyuOCq0?si=XExUoFqhy8rkNfrN",
     chapterVideoLinks: [
@@ -95,7 +93,7 @@ const Courses = [
     courseFees: "0",
     author: "Alice Johnson",
     image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTwr9VtMdcCBp6YbbFDcQI3HmXB-8syHra9-cfqfeiQ1gmeH3KF",
+      "/Djangocard.jpg",
     description: "Master Django from basics to advanced topics.",
     videoUrl: "https://www.youtube.com/embed/rHux0gMZ3Eg?si=k5s2icLkoKTfDD5g",
     chapterVideoLinks: [
@@ -140,7 +138,7 @@ const Courses = [
     courseFees: "0",
     author: "Bob Brown",
     image:
-      "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRMFsP26VWhX83pGaCz2f1Ydr_u-ObqcHM0nin4ynGz5RS05K0A",
+      "/typescriptcard.jpg",
     description: "Learn TypeScript and enhance your JavaScript applications.",
     videoUrl: "https://www.youtube.com/embed/d56mG7DezGs?si=k3Nuin2QIKzYn_8h",
     chapterVideoLinks: [
@@ -186,7 +184,7 @@ const Courses = [
     courseFees: "1499",
     author: "Carol White",
     image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRMfHb72KvujKVNxtZJCK9d41b3nlOVZxStoIt6pL7iF3uLFXlF",
+      "/pythoncard.jpg",
     description:
       "Become proficient in Python for data science.",
     videoUrl: "https://www.youtube.com/embed/LzYNWme1W6Q?si=IKijmy50OhcVmMbu",
@@ -232,7 +230,7 @@ const Courses = [
     courseFees: "0",
     author: "David Green",
     image:
-      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR6qF9if6u9JdxfiktYUoXiK6glGFmXzYiIDtfP5Odap3bJAuXP",
+      "/nodejscard.jpg",
     description: "Learn Node.js and build scalable network applications.",
     videoUrl: "https://www.youtube.com/embed/vJEO57B05Sg?si=5T6iAdF7k9koXs0Z",
     chapterVideoLinks: [
@@ -277,7 +275,7 @@ const Courses = [
     courseFees: "1299",
     author: "Eve Black",
     image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSPkMUTS5bSdtXb4NMi7yXTNyQOH2HjDjcmeB8dqXYl40krbx8X",
+      "/javacard.jpg",
     description: "Comprehensive guide to Java programming.",
     videoUrl: "https://www.youtube.com/embed/r59xYe3Vyks?si=2rLZZL9_J0mvKcUw",
     chapterVideoLinks: [
@@ -323,7 +321,7 @@ const Courses = [
     courseFees: "799",
     author: "Frank White",
     image:
-      "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ0fqLa346Pi2uExrXtCjH3XfXAshh_3djEml3tB0pZWHxPSIqI",
+      "/sqlcard.jpg",
     description: "Learn the essentials of SQL for database management.",
     videoUrl: "https://www.youtube.com/embed/HXV3zeQKqGY?si=UjCwZn-JIABtXhzh",
     chapterVideoLinks: [
@@ -367,7 +365,7 @@ const Courses = [
     courseFees: "0",
     author: "Grace Hopper",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVuFVaMYYk46I4Yt_DCZ2l8XkzVDwTh-nekCYC9kxHuZ5K9g5SfCHoWXAwih_4pELCOCI&usqp=CAU",
+      "/power-BIcard.jpg",
     description: "Microsoft's tool for data visualization and analytics.",
     videoUrl: "https://www.youtube.com/embed/3u7MQz1EyPY?si=c5TKjQ1fT4ntv_jE",
     chapterVideoLinks: [
@@ -412,7 +410,54 @@ const Courses = [
     courseFees: "1599",
     author: "Henry Ford",
     image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQvODt0mGFBnKkFTLLaAuLYJ6kQh8W-c45FTRZxFQUnCHYioaJX",
+      "/springbootcard.jpg",
+    description:
+      "Get started with Spring Boot and build powerful Java applications.",
+    videoUrl: "https://www.youtube.com/embed/90hAvj0A8C8?si=zxcn2UgXLoxWLVRB",
+    chapterVideoLinks: [
+      "https://www.youtube.com/watch?v=Zxwq3aW9ctU&t=90s",
+      "hthttps://www.youtube.com/watch?v=ff-mHzhWXBU&ab_channel=GenieAshwani",
+      "https://www.youtube.com/watch?v=Ch163VfHtvA",
+      "https://www.youtube.com/watch?v=UfOxcrxhC0s",
+      "https://www.youtube.com/watch?v=zp2tqnpZiAU&t=1s&ab_channel=JavaTechie",
+      "https://www.youtube.com/watch?v=vlz9ina4Usk&ab_channel=Telusko",
+      "https://www.youtube.com/watch?v=lB6v8mQnQ3o&t=2s",
+      "https://www.youtube.com/watch?v=CXTiwkZVoZI&ab_channel=edureka%21",
+  
+    ],
+    tabCourseDescription:
+    "Spring Boot simplifies Java application development by offering convention-over-configuration setups, robust dependency management, and embedded server capabilities. It enables rapid creation of production-ready applications with minimal configuration, ideal for microservices and cloud-native architectures.",
+  tabCourseReviewe:'Spring Boot revolutionizes Java development by providing a streamlined framework that simplifies setup, enhances productivity with defaults and embedded servers, and supports rapid deployment of scalable applications ideal for microservices and cloud environments.',
+  tabCourseDiscussion:'Absolutely! What would you like to discuss? Whether it is about Spring Boot, other frameworks, software development practices, or any specific topic within tech or beyond, feel free to dive in!',
+  TabCourseResources: "Spring Boot: Accelerates Java application development with streamlined setup, powerful defaults, and embedded server capabilities. [Spring Boot Official Documentation](https://spring.io/projects/spring-boot), [Spring Boot Guides](https://spring.io/guides), [Spring Boot Blog](https://spring.io/blog)",
+    profName: "Dr. Josh Long",
+    aboutCourseDescription:'Spring Boot accelerates Java application development with streamlined setup, powerful defaults, and embedded server capabilities, fostering efficient creation of modern, scalable applications.',
+    chapter1Name:'Introduction Spring Framework',
+    chapter1VideoName:'Watch Now',
+    chapter2Name:'Road Map',
+    chapter2VideoName:'Watch Now',
+    chapter3Name:'Introduction To Springboot',
+    chapter3VideoName:'Watch now',
+    chapter4Name:'Advance Springboot',
+    chapter4VideoName:'Watch Now',
+    chapter5Name:'Spring V/S Springboot',
+    chapter5VideoName:'Watch Now',
+    chapter6Name:'Simple Project',
+    chapter6VideoName:'Watch Now',
+    chapter7Name:'RESTAPI CRUD + Postman + MySql',
+    chapter7VideoName:'Watch Now',
+    chapter8Name:'Interview Questions',
+    chapter8VideoName:'Watch Now',
+  },
+
+  {
+    id: "mona11",
+    name: "Spring Boot for Beginners",
+    ratings: "4.8",
+    courseFees: "1599",
+    author: "Henry Ford",
+    image:
+      "/springbootcard.jpg",
     description:
       "Get started with Spring Boot and build powerful Java applications.",
     videoUrl: "https://www.youtube.com/embed/90hAvj0A8C8?si=zxcn2UgXLoxWLVRB",

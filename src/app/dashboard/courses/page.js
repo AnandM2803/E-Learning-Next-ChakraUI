@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import React, { useState } from "react";
 import {
   Box,
@@ -15,6 +15,7 @@ import {
   MenuItem,
   IconButton,
   chakra,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
   AiFillStar,
@@ -23,10 +24,10 @@ import {
   AiOutlineSortDescending,
 } from "react-icons/ai";
 import Courses from "../../../../public/courselist";
-// import { useAppDispatch } from "@/app/hooks/reduxHooks";
-import { addEnrolledCourses,removeEnrolledCourses } from "@/lib/enrolledCourse/enrolledCourse";
-import { useDispatch, useSelector } from "react-redux";
-
+import { addEnrolledCourses } from "@/lib/enrolledCourse/enrolledCourse";
+import { useDispatch } from "react-redux";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const RotatedIconButton = chakra(IconButton, {
   baseStyle: {
@@ -43,12 +44,12 @@ const CourseCard = ({
   image,
   description,
 }) => {
+  const dispatch = useDispatch();
 
-  
-const dispatch=useDispatch();
-const handleEnrollClick=()=>{
-  dispatch(addEnrolledCourses(id))
-}
+  const handleEnrollClick = () => {
+    dispatch(addEnrolledCourses(id));
+  };
+
   const formattedFees =
     courseFees === "0"
       ? "Free"
@@ -59,9 +60,6 @@ const handleEnrollClick=()=>{
 
   return (
     <Box
-    templateColumns={{sm:'repeat(2,1fr)',
-      md:'repeat(3,1fr)',lg:'repeat(4,1fr)'
-    }}
       borderWidth="1px"
       borderRadius="15px"
       boxShadow="2px 2px 2px 2px"
@@ -69,14 +67,15 @@ const handleEnrollClick=()=>{
       p="1"
       height="250px"
       mr="8px"
+      overflowY="visible"
     >
       <Image
         src={image}
         alt={name}
-        maxWidth="100%"
+        maxWidth="190px"
         height="80px"
         borderRadius="md"
-        ml="2px"
+        ml="7px"
       />
 
       <VStack align="start" spacing={1} mt="2">
@@ -106,7 +105,12 @@ const handleEnrollClick=()=>{
         <Text fontSize="xs" color="black">
           By {author}
         </Text>
-        <Button size="xs" colorScheme="teal" mt="2px" onClick={()=>handleEnrollClick()}>
+        <Button
+          size="xs"
+          colorScheme="teal"
+          mt="2px"
+          onClick={() => handleEnrollClick()}
+        >
           Enroll
         </Button>
       </VStack>
@@ -117,6 +121,9 @@ const handleEnrollClick=()=>{
 const CourseCards = () => {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState(null);
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+
+  const dispatch = useDispatch();
 
   const filteredCourses =
     filter === "all"
@@ -145,8 +152,23 @@ const CourseCards = () => {
     }
   });
 
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 430 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 430, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
-    <Box>
+    <Box overflowY="scroll"> 
       <HStack justify="flex-end" mr={4} mb={4}>
         <Menu>
           <MenuButton
@@ -189,11 +211,12 @@ const CourseCards = () => {
         </Menu>
       </HStack>
 
-      <Wrap spacing={8} mt={1} justify="center" overflowX="auto" maxW="80vw">
-        {sortedCourses.map((course, index) => (
-          <WrapItem key={index}>
+      {isMobile ? (
+        <Carousel responsive={responsive}>
+          {sortedCourses.map((course, index) => (
             <CourseCard
-            id={course.id}
+              key={index}
+              id={course.id}
               name={course.name}
               ratings={course.ratings}
               courseFees={course.courseFees}
@@ -201,9 +224,25 @@ const CourseCards = () => {
               image={course.image}
               description={course.description}
             />
-          </WrapItem>
-        ))}
-      </Wrap>
+          ))}
+        </Carousel>
+      ) : (
+        <Wrap spacing={8} mt={1} justify="center" h="79vh">
+          {sortedCourses.map((course, index) => (
+            <WrapItem key={index}>
+              <CourseCard
+                id={course.id}
+                name={course.name}
+                ratings={course.ratings}
+                courseFees={course.courseFees}
+                author={course.author}
+                image={course.image}
+                description={course.description}
+              />
+            </WrapItem>
+          ))}
+        </Wrap>
+      )}
     </Box>
   );
 };

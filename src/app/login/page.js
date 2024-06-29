@@ -136,7 +136,7 @@ function Login() {
           </Button>
         </FormControl>
         <Link href="/signup" color="black" padding="10px" fontWeight="bold" mt='10px' paddingTop='10px'>
-          Don't have an account?
+          Don&apos;t have an account?
         </Link>
       </form>
     </Grid>

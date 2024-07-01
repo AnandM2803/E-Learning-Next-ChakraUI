@@ -1,34 +1,40 @@
 "use client";
 import { useState } from "react";
-import { Box, Flex, Avatar, IconButton, Button, Image } from "@chakra-ui/react";
+import { Box, Flex, Avatar, IconButton, Button, Image, useMediaQuery } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const router1 = useRouter();
+  const router = useRouter();
   const [showLogoutButton, setShowLogoutButton] = useState(false);
+  const [isMobile] = useMediaQuery("(max-width: 768px)"); // Adjust max-width as per your design needs
 
   const handleAvatarClick = () => {
     setShowLogoutButton(true);
   };
 
   const handleLogout = () => {
-    router1.push("/");
+    router.push("/");
     setShowLogoutButton(false);
   };
 
   return (
     <Box bg="#BFFDFD" color="white" p={{ base: "2", md: "4" }}>
       <Flex justify="space-between" align="center" flexDirection={{ base: "column", md: "row" }}>
-        <Flex justify="center" align="center" mb={{ base: "4", md: "0" }}>
-          <Avatar boxSize={{ base: "30px", md: "40px" }}>
-            <Image
-              src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRSPx5gg-QaimemINnKlX8d_otTWV3x8MCCVlqUYO2uxbpGUrEf"
-              alt="logo"
-              style={{ width: "100%", height: "100%", borderRadius: "50%" }} 
-            />
-          </Avatar>
-        </Flex>
+        {/* Logo section */}
+        {!isMobile && ( // Render logo section only if not on mobile
+          <Flex justify="center" align="center" mb={{ base: "4", md: "0" }}>
+            <Avatar boxSize={{ base: "30px", md: "40px" }}>
+              <Image
+                src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRSPx5gg-QaimemINnKlX8d_otTWV3x8MCCVlqUYO2uxbpGUrEf"
+                alt="logo"
+                style={{ width: "100%", height: "100%", borderRadius: "50%" }}
+              />
+            </Avatar>
+          </Flex>
+        )}
+        
+        {/* Notification and profile section */}
         <Flex align="center">
           <IconButton
             icon={<BellIcon w={{ base: "24px", md: "30px" }} h={{ base: "24px", md: "30px" }} />}

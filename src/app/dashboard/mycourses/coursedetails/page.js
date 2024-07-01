@@ -1,12 +1,14 @@
 'use client'
 import React, { Suspense } from "react";
 import ReactPlayer from "react-player";
-import { Text } from "@chakra-ui/react";
+import { Text, useMediaQuery } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import Courses from "../../../../../public/courselist";
 import { useSearchParams } from "next/navigation";
 
 const VideoPlayer = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)"); 
+
   const searchparams = useSearchParams();
   const courseId = searchparams.get("id");
   const chapter = searchparams.get("chapter");
@@ -18,8 +20,8 @@ const VideoPlayer = () => {
   return (
     <ReactPlayer
       url={selectedCard}
-      width={"100%"}
-      height={"100%"}
+      width={isMobile ? "100%" : "auto"} 
+      height={isMobile ? "auto" : "100%"} 
       controls={true}
       style={{ borderRadius: "8px" }}
     />

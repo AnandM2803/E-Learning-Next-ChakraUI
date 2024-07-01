@@ -1,8 +1,7 @@
-'use client'
+'use client';
 import React, { useState } from "react";
 import {
   Box,
-  Image,
   Text,
   VStack,
   HStack,
@@ -16,6 +15,7 @@ import {
   IconButton,
   chakra,
   useMediaQuery,
+  Image,
 } from "@chakra-ui/react";
 import {
   AiFillStar,
@@ -63,57 +63,58 @@ const CourseCard = ({
       borderWidth="1px"
       borderRadius="15px"
       boxShadow="2px 2px 2px 2px"
-      width="180px"
+      width="179px"
       p="1"
       height="250px"
       mr="8px"
       overflowY="visible"
+      id="courseboxcontainer"
     >
-      <Image
-        src={image}
-        alt={name}
-        maxWidth="190px"
-        height="80px"
-        borderRadius="md"
-        ml="7px"
-      />
-
-      <VStack align="start" spacing={1} mt="2">
-        <Text fontWeight="bold" fontSize="sm" isTruncated>
-          {name}
-        </Text>
-        <Box height="2rem">
-          <Text fontSize="xs" color="gray" noOfLines={2}>
-            {description}
+      
+        <Image
+          src={image}
+          alt={name}
+          maxWidth="190px"
+          height="80px"
+          borderRadius="md"
+          ml="7px"
+        />
+        <VStack align="start" spacing={1} mt="2" id="coursevstack1">
+          <Text fontWeight="bold" fontSize="sm" isTruncated>
+            {name}
           </Text>
-        </Box>
-        <HStack spacing={1}>
-          <Text fontSize="xs" color="gray">
-            {ratings}
+          <Box height="2rem">
+            <Text fontSize="xs" color="gray" noOfLines={2}>
+              {description}
+            </Text>
+          </Box>
+          <HStack spacing={1} id="coursehstack1">
+            <Text fontSize="xs" color="gray">
+              {ratings}
+            </Text>
+            {[...Array(5)].map((_, i) => (
+              <AiFillStar
+                key={i}
+                size="12px"
+                color={i < Math.round(ratings) ? "teal" : "gray"}
+              />
+            ))}
+          </HStack>
+          <Text fontSize="xs" fontWeight="bold">
+            {formattedFees}
           </Text>
-          {[...Array(5)].map((_, i) => (
-            <AiFillStar
-              key={i}
-              size="12px"
-              color={i < Math.round(ratings) ? "teal" : "gray"}
-            />
-          ))}
-        </HStack>
-        <Text fontSize="xs" fontWeight="bold">
-          {formattedFees}
-        </Text>
-        <Text fontSize="xs" color="black">
-          By {author}
-        </Text>
-        <Button
-          size="xs"
-          colorScheme="teal"
-          mt="2px"
-          onClick={() => handleEnrollClick()}
-        >
-          Enroll
-        </Button>
-      </VStack>
+          <Text fontSize="xs" color="black">
+            By {author}
+          </Text>
+          <Button
+            size="xs"
+            colorScheme="teal"
+            mt="2px"
+            onClick={handleEnrollClick}
+          >
+            Enroll
+          </Button>
+        </VStack>
     </Box>
   );
 };
@@ -167,16 +168,34 @@ const CourseCards = () => {
     },
   };
 
+  const carouselContainerStyle = {
+    overflow: "hidden",
+  };
+
+  const CarouselContainer = chakra("div", {
+    baseStyle: {
+      width: "80%", 
+      padding: "0 1px", 
+    },
+  });
+
   return (
-    <Box overflowY="scroll"> 
-      <HStack justify="flex-end" mr={4} mb={4}>
-        <Menu>
+    <Box overflowY="scroll" id="coursebox2">
+      <HStack id="coursehstack2"
+        justify={isMobile ? "flex-start" : "flex-end"}
+        p={1}
+        px={2}
+        borderBottom="1px"
+        borderColor="gray.200"
+        mb={2}
+      >
+        <Menu id="coursemenu1">
           <MenuButton
             as={RotatedIconButton}
             icon={<AiOutlineFilter />}
             colorScheme="teal"
           />
-          <MenuList>
+          <MenuList id="coursemenulist">
             <MenuItem onClick={() => setFilter("all")}>All</MenuItem>
             <MenuItem onClick={() => setFilter("paid")}>Paid</MenuItem>
             <MenuItem onClick={() => setFilter("unpaid")}>Unpaid</MenuItem>
@@ -190,16 +209,16 @@ const CourseCards = () => {
           />
           <MenuList>
             <MenuItem onClick={() => setSort("name-asc")}>
-              Asc by CName
+              Asc by Name
             </MenuItem>
             <MenuItem onClick={() => setSort("name-desc")}>
-              Desc by CName
+              Desc by Name
             </MenuItem>
             <MenuItem onClick={() => setSort("courseFees-asc")}>
-              Asc by CFees
+              Asc by Fees
             </MenuItem>
             <MenuItem onClick={() => setSort("courseFees-desc")}>
-              Desc by CFees
+              Desc by Fees
             </MenuItem>
             <MenuItem onClick={() => setSort("ratings-asc")}>
               Asc by Ratings
@@ -212,22 +231,33 @@ const CourseCards = () => {
       </HStack>
 
       {isMobile ? (
-        <Carousel responsive={responsive}>
+        <Carousel id='carousel'
+          responsive={responsive}
+          swipeable
+          draggable
+          autoPlay
+          autoPlaySpeed={3000}
+          infinite
+          keyBoardControl
+          containerStyle={carouselContainerStyle}
+          itemClass="carousel-item-padding-10-px" 
+        >
           {sortedCourses.map((course, index) => (
-            <CourseCard
-              key={index}
-              id={course.id}
-              name={course.name}
-              ratings={course.ratings}
-              courseFees={course.courseFees}
-              author={course.author}
-              image={course.image}
-              description={course.description}
-            />
+            <CarouselContainer key={index} id="carouselcontainer">
+              <CourseCard
+                id={course.id}
+                name={course.name}
+                ratings={course.ratings}
+                courseFees={course.courseFees}
+                author={course.author}
+                image={course.image}
+                description={course.description}
+              />
+            </CarouselContainer>
           ))}
         </Carousel>
       ) : (
-        <Wrap spacing={8} mt={1} justify="center" h="79vh">
+        <Wrap spacing={4} mt={1} justify="center" h="75vh" id="coursewrap1">
           {sortedCourses.map((course, index) => (
             <WrapItem key={index}>
               <CourseCard

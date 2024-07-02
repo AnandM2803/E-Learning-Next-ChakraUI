@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Text, Box, Flex } from "@chakra-ui/react";
+import { Grid, Text, Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import {
   BarChart,
   Bar,
@@ -22,6 +22,8 @@ const data = [
 ];
 
 const AdminCourseChart = () => {
+  const [isMobile] = useMediaQuery("(max-width: 500px)");
+
   const maxHeight = Math.max(
     ...data.map((entry) => entry.Views),
     ...data.map((entry) => entry.Enroll)
@@ -36,8 +38,7 @@ const AdminCourseChart = () => {
       gap={2}
       padding={3}
       border="1px solid #e0e0e0"
-      width="500px"
-    >
+      width={isMobile ? "100%" : "500px"}>
       <Flex justifyContent="space-between" alignItems="center" paddingX="10px">
         <Text fontSize="12px" fontWeight="bold">
           Courses
@@ -62,14 +63,14 @@ const AdminCourseChart = () => {
             <Bar
               dataKey="Views"
               fill="#C3DDFD"
-              barSize={10}
+              barSize={isMobile ? 6 : 10} 
               name="Views"
               radius={[10, 10, 0, 0]}
             />
             <Bar
               dataKey="Enroll"
               fill="#4483F8"
-              barSize={10}
+              barSize={isMobile ? 6 : 10} 
               name="Enroll"
               radius={[10, 10, 0, 0]}
             />

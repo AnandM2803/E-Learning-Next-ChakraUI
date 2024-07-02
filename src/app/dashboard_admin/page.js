@@ -34,10 +34,16 @@ const Admin = () => {
         </HStack>
 
         {/* Card container */}
-        <HStack gap="30px">
-          <Box><AdminStudentEnrolled /></Box>
-          <Box><AdminPopularTask /></Box>
-          <Box><AdminGroupProgress /></Box>
+        <HStack 
+          gap={isMobile ? "20px" : "30px"} 
+          overflowX={isMobile ? "auto" : "unset"} 
+          flexWrap="nowrap" 
+          justifyContent={isMobile ? "flex-start" : "space-between"} 
+          w="90%"  // Ensure full width on mobile
+        >
+          <Box flexShrink="0" w={isMobile ? "100%" : "30%"} minWidth="200px"><AdminStudentEnrolled /></Box>
+          <Box flexShrink="0" w={isMobile ? "100%" : "30%"} minWidth="200px"><AdminPopularTask /></Box>
+          <Box flexShrink="0" w={isMobile ? "100%" : "30%"} minWidth="200px"><AdminGroupProgress /></Box>
         </HStack>
       </VStack>
     </Box>

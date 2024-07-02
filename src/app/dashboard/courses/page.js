@@ -181,8 +181,8 @@ const CourseCards = () => {
 
   return (
     <Box overflowY="scroll" id="coursebox2">
-      <HStack id="coursehstack2"
-        justify={isMobile ? "flex-start" : "flex-end"}
+      <HStack
+        justify={isMobile ? "center" : "flex-end"} 
         p={1}
         px={2}
         borderBottom="1px"
@@ -231,7 +231,7 @@ const CourseCards = () => {
       </HStack>
 
       {isMobile ? (
-        <Carousel id='carousel'
+        <Carousel
           responsive={responsive}
           swipeable
           draggable
@@ -240,7 +240,7 @@ const CourseCards = () => {
           infinite
           keyBoardControl
           containerStyle={carouselContainerStyle}
-          itemClass="carousel-item-padding-10-px" 
+          itemClass="carousel-item-padding-10-px"
         >
           {sortedCourses.map((course, index) => (
             <CarouselContainer key={index} id="carouselcontainer">

@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react"; 
+import { useState, Suspense } from "react";
 import {
   Box,
   Flex,
@@ -38,16 +38,16 @@ const ReactProjectDescription = ({ children }) => {
     <Box p={4} position="relative" bg="#F9FBE7">
       <Flex
         columnGap="20px"
-        h="100%"
         flexDirection={{ base: "column", md: "row" }}
+        wrap="wrap"
       >
         <VStack
           w={{ base: "100%", md: "60%" }}
           align="start"
           spacing={4}
-          h="100%"
+          mt={{ base: 4, md: 0 }}
         >
-          <Flex flexDirection="column" alignItems="start" w="100%" h="100%">
+          <Flex flexDirection="column" alignItems="start" w="100%">
             <Flex mb={1} alignItems="center" width="100%" h="fit-content">
               <Box flex="1">
                 <Box fontWeight="bold" fontSize="20px">
@@ -58,7 +58,7 @@ const ReactProjectDescription = ({ children }) => {
                 </Box>
               </Box>
               <Flex position="relative">
-                <ShareIcon></ShareIcon>
+                <ShareIcon />
               </Flex>
             </Flex>
             {/* video component */}
@@ -77,15 +77,15 @@ const ReactProjectDescription = ({ children }) => {
               <TabList
                 borderBottom="1px solid gray"
                 display="flex"
-                columnGap={"40px"}
-                flexWrap={{ base: "wrap", md: "nowrap" }}
+                columnGap={"20px"}
+                flexWrap="wrap"
               >
                 <Tab
                   _selected={{
                     borderBottom: "2px solid #46C2CB",
                     color: "blue",
                   }}
-                  mx={4}
+                  mx={2}
                   p={0}
                   border="none"
                   backgroundColor="transparent"
@@ -98,7 +98,7 @@ const ReactProjectDescription = ({ children }) => {
                     borderBottom: "2px solid #46C2CB",
                     color: "blue",
                   }}
-                  mx={4}
+                  mx={2}
                   p={0}
                   border="none"
                   backgroundColor="transparent"
@@ -111,7 +111,7 @@ const ReactProjectDescription = ({ children }) => {
                     borderBottom: "2px solid #46C2CB",
                     color: "blue",
                   }}
-                  mx={4}
+                  mx={2}
                   p={0}
                   border="none"
                   backgroundColor="transparent"
@@ -124,7 +124,7 @@ const ReactProjectDescription = ({ children }) => {
                     borderBottom: "2px solid #46C2CB",
                     color: "blue",
                   }}
-                  mx={4}
+                  mx={2}
                   p={0}
                   border="none"
                   backgroundColor="transparent"

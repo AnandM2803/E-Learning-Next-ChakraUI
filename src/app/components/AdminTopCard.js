@@ -1,3 +1,4 @@
+'use client'
 import { Box, Text, Button, useMediaQuery } from "@chakra-ui/react";
 import { LuClock5, LuClock12 } from "react-icons/lu";
 import { FaUserFriends } from "react-icons/fa";
@@ -42,13 +43,13 @@ const AdminTopCard = () => {
 
   return (
     <>
-      <Box display={"flex"} justifyContent={"space-between"}>
+      <Box display={isSmallerThan768 ? "block" : "flex"} justifyContent={"space-between"} alignItems={isSmallerThan768 ? "start" : "center"}>
         {/* text container */}
-        <Box ml={isSmallerThan768 ? '0' : '2px'} mt={isSmallerThan768 ? '8px' : '3px'}>
+        <Box ml={isSmallerThan768 ? '0' : '2px'} mt={isSmallerThan768 ? '8px' : '3px'} mr={isSmallerThan768 ? '10px':'0'}>
           <Text><b>Overview</b></Text>
         </Box>
         {/* button containers */}
-        <Box mt={isSmallerThan768 ? '12px' : '2px'}>
+        <Box mt={isSmallerThan768 ? '12px' : '2px'} display="flex">
           <Button
             mr={'5px'}
             backgroundColor="#fff"

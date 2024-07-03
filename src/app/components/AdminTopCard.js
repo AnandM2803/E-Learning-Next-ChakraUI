@@ -53,14 +53,22 @@ const AdminTopCard = () => {
         <Box mt={isSmallerThan768 ? '8px' : '3px'} mb={isSmallerThan768 ? '10px':'0'}>
           <Text fontSize={isSmallerThan768 ? 'xl' : 'lg'}><b>Overview</b></Text>
         </Box>
-        <Box mt={isSmallerThan768 ? '8px' : '2px'} display="flex" flexWrap="wrap" justifyContent={isSmallerThan768 ? "center" : "flex-start"}>        
+        <Box
+          mt={isSmallerThan768 ? '8px' : '2px'}
+          display="flex"
+          flexWrap="wrap"
+          justifyContent={isSmallerThan768 ? "center" : "flex-end"}
+          width="100%"
+        >
           <Button
             mr={'5px'}
             backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
             onClick={() => handleButtonClick("Week")}
-          >{isSmallerThan768 ? "W" : "Week"}</Button>
+          >
+            {isSmallerThan768 ? "W" : "Week"}
+          </Button>
           <Button
             backgroundColor="#fff"
             borderRadius="8px"

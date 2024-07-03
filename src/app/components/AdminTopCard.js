@@ -1,45 +1,49 @@
 'use client'
+import { useState } from 'react';
 import { Box, Text, Button, useMediaQuery } from "@chakra-ui/react";
 import { LuClock5, LuClock12 } from "react-icons/lu";
 import { FaUserFriends } from "react-icons/fa";
 import { GrView } from "react-icons/gr";
 import { MdOutlineTaskAlt } from "react-icons/md";
 
-const AdminContent = [
-  {
-    id: '001',
-    icon: GrView,
-    rating: '1.5k',
-    text: 'Courses view',
-  },
-  {
-    id: '002',
-    icon: LuClock5,
-    rating: '2.2k',
-    text: 'Enrolled Students',
-  },
-  {
-    id: '003',
-    icon: FaUserFriends,
-    rating: '225',
-    text: 'Average Time Spent',
-  },
-  {
-    id: '004',
-    icon: MdOutlineTaskAlt,
-    rating: '120',
-    text: 'Total Time Spent',
-  },
-  {
-    id: '005',
-    icon: LuClock12,
-    rating: '12',
-    text: 'Task Completion',
-  },
-];
+const data = {
+  Week: [
+    { id: '001', icon: GrView, rating: '1.5k', text: 'Courses view' },
+    { id: '002', icon: LuClock5, rating: '2.2k', text: 'Enrolled Students' },
+    { id: '003', icon: FaUserFriends, rating: '225', text: 'Average Time Spent' },
+    { id: '004', icon: MdOutlineTaskAlt, rating: '120', text: 'Total Time Spent' },
+    { id: '005', icon: LuClock12, rating: '12', text: 'Task Completion' },
+  ],
+  Month: [
+    { id: '001', icon: GrView, rating: '6k', text: 'Courses view' },
+    { id: '002', icon: LuClock5, rating: '8.8k', text: 'Enrolled Students' },
+    { id: '003', icon: FaUserFriends, rating: '900', text: 'Average Time Spent' },
+    { id: '004', icon: MdOutlineTaskAlt, rating: '480', text: 'Total Time Spent' },
+    { id: '005', icon: LuClock12, rating: '50', text: 'Task Completion' },
+  ],
+  Quarter: [
+    { id: '001', icon: GrView, rating: '18k', text: 'Courses view' },
+    { id: '002', icon: LuClock5, rating: '26.4k', text: 'Enrolled Students' },
+    { id: '003', icon: FaUserFriends, rating: '2700', text: 'Average Time Spent' },
+    { id: '004', icon: MdOutlineTaskAlt, rating: '1440', text: 'Total Time Spent' },
+    { id: '005', icon: LuClock12, rating: '150', text: 'Task Completion' },
+  ],
+  Year: [
+    { id: '001', icon: GrView, rating: '72k', text: 'Courses view' },
+    { id: '002', icon: LuClock5, rating: '105.6k', text: 'Enrolled Students' },
+    { id: '003', icon: FaUserFriends, rating: '10800', text: 'Average Time Spent' },
+    { id: '004', icon: MdOutlineTaskAlt, rating: '5760', text: 'Total Time Spent' },
+    { id: '005', icon: LuClock12, rating: '600', text: 'Task Completion' },
+  ],
+};
 
 const AdminTopCard = () => {
   const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const [currentView, setCurrentView] = useState('Week');
+
+  const handleButtonClick = (view) => {
+    setCurrentView(view);
+  };
 
   return (
     <>
@@ -55,6 +59,7 @@ const AdminTopCard = () => {
             backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+            onClick={() => handleButtonClick('Week')}
           >
             {isSmallerThan768 ? "W" : "Week"}
           </Button>
@@ -63,6 +68,7 @@ const AdminTopCard = () => {
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
             mr={'5px'}
+            onClick={() => handleButtonClick('Month')}
           >
             {isSmallerThan768 ? "M" : "Month"}
           </Button>
@@ -71,6 +77,7 @@ const AdminTopCard = () => {
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
             mr={'5px'}
+            onClick={() => handleButtonClick('Quarter')}
           >
             {isSmallerThan768 ? "Q" : "Quarter"}
           </Button>
@@ -78,6 +85,7 @@ const AdminTopCard = () => {
             backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
+            onClick={() => handleButtonClick('Year')}
           >
             {isSmallerThan768 ? "Y" : "Year"}
           </Button>
@@ -95,7 +103,7 @@ const AdminTopCard = () => {
         overflowY={isSmallerThan768 ? 'auto' : 'hidden'}
         maxH={isSmallerThan768 ? '240px' : 'none'}
       >
-        {AdminContent.map(item => (
+        {data[currentView].map(item => (
           <Box
             key={item.id}
             width={"190px"}

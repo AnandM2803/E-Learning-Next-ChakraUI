@@ -33,7 +33,7 @@ const StudentDetails = [
         text: 'Management and persuasion skills for Startup'
     },
     {
-        image: '/studentprof6.jpg',
+        image: '/studentprof1.jpg',
         name: 'Den Andrew',
         day: 'on July 2023',
         progressValue: 20,
@@ -43,7 +43,7 @@ const StudentDetails = [
 
 const AdminStudentEnrolled = () => {
     return (
-        <Grid gap={2} p={4} border='1px solid white' backgroundColor="#fff"
+        <Grid gap={2} p={2} border='1px solid white' backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)">
             <Text fontSize="14px" fontWeight="bold">Students Enrolled</Text>
@@ -62,7 +62,7 @@ const AdminStudentEnrolled = () => {
                             <Text fontWeight="bold" fontSize='10px' color='blue' whiteSpace="nowrap">{student.name}</Text>
                             <Text ml={1} color="gray.500" fontSize='10px' whiteSpace="nowrap">{student.day}</Text>
                             <Box width="100%">
-                                <Progress colorScheme='green' size='sm' value={student.progressValue} width='90px' borderRadius='10px' ml={'35px'} />
+                                <Progress colorScheme='green' size='sm' value={student.progressValue} width='90px' borderRadius='10px' ml={'25px'} />
                             </Box>
                         </Flex>
                         <Text fontSize="12px" mt={2}>{student.text}</Text>

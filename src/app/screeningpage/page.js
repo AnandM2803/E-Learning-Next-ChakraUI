@@ -1,6 +1,6 @@
 'use client'
 import { Box, Button, Grid, VStack, useMediaQuery,HStack } from "@chakra-ui/react";
-import { FaChalkboardTeacher } from "react-icons/fa";
+import { RiAdminFill } from "react-icons/ri";
 import { SiInstructure } from "react-icons/si";
 import { PiStudentBold } from "react-icons/pi";
 import Link from 'next/link';
@@ -39,9 +39,9 @@ function AccessPage() {
                 _hover={{ bg: "#2D3748", transform: "scale(1.05)" }}
                 _active={{ bg: "#1A202C" }}
                 _focus={{ outline: "none" }}
-                leftIcon={<FaChalkboardTeacher />}
+                leftIcon={<RiAdminFill />}
               >
-                Teacher
+                Admin
               </Button>
             </Link>
             <Link href="#">
@@ -87,7 +87,7 @@ function AccessPage() {
           </VStack>
         ) : (
           <HStack spacing={40} justify="center">
-            <Link href="#">
+            <Link href="/dashboard_admin">
               <Button
                 fontSize="1.2rem"
                 px="6"
@@ -102,9 +102,9 @@ function AccessPage() {
                 _hover={{ bg: "#2D3748", transform: "scale(1.05)" }}
                 _active={{ bg: "#1A202C" }}
                 _focus={{ outline: "none" }}
-                leftIcon={<FaChalkboardTeacher />}
+                leftIcon={<RiAdminFill />}
               >
-                Teacher
+                Admin
               </Button>
             </Link>
             <Link href="#">

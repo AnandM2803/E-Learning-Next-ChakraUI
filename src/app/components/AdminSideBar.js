@@ -3,20 +3,20 @@ import React, { useState } from "react";
 import { Box, VStack, useMediaQuery } from "@chakra-ui/react";
 import Link from "next/link";
 
-import { MdSpaceDashboard } from "react-icons/md";
+import { RiAdminFill } from "react-icons/ri";
 import { SiCoursera } from "react-icons/si";
-import { PiExamFill } from "react-icons/pi";
-import { MdModelTraining } from "react-icons/md";
-import { GiProgression } from "react-icons/gi";
+import { FaUsers } from "react-icons/fa";
+import { BiTask } from "react-icons/bi";
+import { FaMessage } from "react-icons/fa6";
+import { MdOutlineGroups3 } from "react-icons/md";
 import { PiCertificateFill } from "react-icons/pi";
 import { PiSubtitlesFill } from "react-icons/pi";
-import { FaDiscourse } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { IoMdLogOut } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import styles from "./Sidebar.module.css";
 
-const SideBar = () => {
+const AdminSideBar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
@@ -51,17 +51,17 @@ const SideBar = () => {
         onClick={toggleVisibility}
         sx={hamburgerStyles}
       >
-       <RxHamburgerMenu size={'25px'}/>
+        <RxHamburgerMenu size={'25px'}/>
       </Box>
       <VStack align="start" fontSize="17px" className={styles.sidelink} mt="100px" id="vstackcontainer">
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" alignItems="center" justifyContent="start" columnGap="5px">
-            <Link href="/dashboard" display='flex'>
-              <MdSpaceDashboard size="17"  />
+            <Link href="/dashboard_admin" display='flex'>
+              <RiAdminFill size="17"  />
             </Link>
             {isVisible && !isMobile && (
               <Box>
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/dashboard_admin">AdminDash</Link>
               </Box>
             )}
           </Box>
@@ -78,35 +78,35 @@ const SideBar = () => {
           </Box>
    
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/exams">
-            <PiExamFill />
+            <Link href="/dashboard_admin/Students">
+            <FaUsers />
             </Link>
             {isVisible && !isMobile && (
               <Box>
-                <Link href="/dashboard/exams">Exams</Link>
+                <Link href="/dashboard_admin/Students">Students</Link>
               </Box>
             )}
           </Box>
        
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/training">
-            <MdModelTraining />
+            <Link href="/dashboard_admin/Tasks">
+            <BiTask />
             </Link>
             {isVisible && !isMobile && (
               <Box>
-                <Link href="/dashboard/training">Training</Link>
+                <Link href="/dashboard_admin/Tasks">Tasks</Link>
               </Box>
             )}
           </Box>
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/mycourses">
-            <FaDiscourse />
+            <Link href="/dashboard_admin/Messages">
+            <FaMessage />
             </Link>
             {isVisible && !isMobile && (
               <Box>
-                <Link href="/dashboard/mycourses">My Courses</Link>
+                <Link href="/dashboard_admin/Messages">Messages</Link>
               </Box>
             )}
           </Box>
@@ -114,37 +114,17 @@ const SideBar = () => {
         </Box>
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/myprogress">
-            <GiProgression />
+            <Link href="/dashboard_admin/Groups">
+            <MdOutlineGroups3 />
             </Link>
             {isVisible && !isMobile && (
               <Box>
-                <Link href="/dashboard/myprogress">My Progress</Link>
+                <Link href="/dashboard_admin/Groups">Groups</Link>
               </Box>
             )}
           </Box>
 
-          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/getcertificate">
-            <PiCertificateFill />
-            </Link>
-            {isVisible && !isMobile && (
-              <Box>
-                <Link href="/dashboard/getcertificate">Get Certificate</Link>
-              </Box>
-            )}
-          </Box>  
 
-          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/subscription">
-            <PiSubtitlesFill />
-            </Link>
-            {isVisible && !isMobile && (
-              <Box>
-                <Link href="/dashboard/subscription">Subscription</Link>
-              </Box>
-            )}
-          </Box>
 
          
 
@@ -176,4 +156,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default AdminSideBar;

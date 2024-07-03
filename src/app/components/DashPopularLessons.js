@@ -12,7 +12,9 @@ function DashPopularLessons() {
             <Box display={'flex'} justifyContent={'space-between'} paddingLeft={'8px'} paddingTop={'8px'} paddingRight={'8px'}>
                 <Text color='black' fontWeight='bold'>Popular Lessons</Text>
                 <Link href={'/dashboard/courses'}>
-                    <Button bg='#ACE1AF' _hover={{ bg: 'white' }} fontSize='12px'>View All</Button>
+                    <Button  backgroundColor="#C3DDFD"
+      borderRadius="8px"
+      boxShadow="0 4px 12px rgba(0,0,0,0.1)" _hover={{ bg: 'white' }} fontSize='12px' fontWeight={'bold'}>View All</Button>
                 </Link>
             </Box>
             {/* 1st Row */}

@@ -6,10 +6,15 @@ import AdminTaskChart from "../components/AdminTaskChart";
 import AdminStudentEnrolled from "../components/AdminStudentEnrolled";
 import AdminPopularTask from "../components/AdminPopularTask";
 import AdminGroupProgress from "../components/AdminGroupProgress";
+import React, { useState } from "react";
 
 const Admin = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [selectedView, setSelectedView] = useState('Week');
 
+  const handleChangeView = (view) => {
+    setSelectedView(view);
+  };
   return (
     <Box 
       backgroundColor="#F3F4F6" 
@@ -17,21 +22,10 @@ const Admin = () => {
       p={{ base: "4", md: "0" }}
       overflowY="scroll"
       h={isMobile ? '100%' :'86vh'}
+      overflowX={isMobile ? 'unset':'unset'}
     >
       <VStack gap="20px" h="100%">
-        <Box><AdminTopCard /></Box>
-
-        {/* Bar chart container */}
-        <HStack 
-          gap={isMobile ? "20px" : "25px"} 
-          overflowX={isMobile ? "auto" : "unset"} 
-          flexWrap="nowrap" 
-          justifyContent={isMobile ? "flex-start" : "space-between"} 
-          w="90%"  // Ensure full width on mobile
-        >
-          <Box flexShrink="0" w={isMobile ? "100%" : "45%"} minWidth="200px"><AdminCourseChart /></Box>
-          <Box flexShrink="0" w={isMobile ? "100%" : "45%"} minWidth="200px"><AdminTaskChart /></Box>
-        </HStack>
+        <Box><AdminTopCard onChangeView={handleChangeView} /></Box>
 
         {/* Card container */}
         <HStack 
@@ -39,7 +33,7 @@ const Admin = () => {
           overflowX={isMobile ? "auto" : "unset"} 
           flexWrap="nowrap" 
           justifyContent={isMobile ? "flex-start" : "space-between"} 
-          w="90%"  // Ensure full width on mobile
+          w="90%" 
         >
           <Box flexShrink="0" w={isMobile ? "100%" : "30%"} minWidth="200px"><AdminStudentEnrolled /></Box>
           <Box flexShrink="0" w={isMobile ? "100%" : "30%"} minWidth="200px"><AdminPopularTask /></Box>

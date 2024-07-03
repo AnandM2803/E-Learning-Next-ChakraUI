@@ -4,7 +4,7 @@ import { Box, Flex, Avatar, IconButton, Button, Image, useMediaQuery } from "@ch
 import { BellIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
 
-const Header = () => {
+const AdminHeader = () => {
   const router = useRouter();
   const [showLogoutButton, setShowLogoutButton] = useState(false);
   const [isMobile] = useMediaQuery("(max-width: 768px)"); 
@@ -45,7 +45,7 @@ const Header = () => {
           />
           <Avatar onClick={handleAvatarClick} ml={{ base: "2", md: "4" }} boxSize={{ base: "30px", md: "40px" }}>
             <Image
-              src="/studentprof2.jpg"
+              src="/profile1.jpg"
               alt="profile"
               style={{ borderRadius: "50%" }}
               width="100%"
@@ -63,4 +63,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;

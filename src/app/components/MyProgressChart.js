@@ -38,14 +38,15 @@ const MyProgressChart = () => {
       templateRows="auto 1fr"
       gap={3}
       padding={isMobile ? 2 : 3}
-      border="1px solid #e0e0e0"
+      backgroundColor="#fff"
       borderRadius="8px"
+      boxShadow="0 4px 12px rgba(0,0,0,0.1)"
       templateColumns={isMobile ? "1fr" : "auto"}
     >
       <Text fontSize={isMobile ? "10px" : "12px"} fontWeight="bold" textAlign="center">
         Weekly Learning Progress
       </Text>
-      <Box border="1px solid #e0e0e0" borderRadius="8px" padding={isMobile ? "10px" : "14px"}>
+      <Box  borderRadius="8px" padding={isMobile ? "10px" : "14px"}>
         <ResponsiveContainer width="100%" height={isMobile ? 200 : 230}>
           <BarChart
             data={data}

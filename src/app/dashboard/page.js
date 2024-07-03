@@ -30,9 +30,9 @@ const Dashboard = () => {
           width={['100%', '100%', '320px']} 
           height={['auto', 'auto', '200px']} 
           p="4"
-          boxShadow="lg" 
-          borderRadius="md" 
-          bg="#F6F5F2"
+          backgroundColor="#fff"
+          borderRadius="8px"
+          boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           mb={['4', '4', '30px']}
         >
           <DashAccordion />
@@ -45,9 +45,9 @@ const Dashboard = () => {
         width={['100%', '100%', '320px']} 
         height={['auto', 'auto', '360px']} 
         p="4"
-        boxShadow="lg" 
-        borderRadius="md" 
-        bg="#F6F5F2"
+        backgroundColor="#fff"
+        borderRadius="8px"
+        boxShadow="0 4px 12px rgba(0,0,0,0.1)"
         mb={['4', '4', '0']}
       >
         <MyProgressChart h={['auto', 'auto', '340px']} />

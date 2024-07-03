@@ -1,45 +1,47 @@
 'use client'
-import { useState } from 'react';
+import React, { useState } from "react";
 import { Box, Text, Button, useMediaQuery } from "@chakra-ui/react";
 import { LuClock5, LuClock12 } from "react-icons/lu";
 import { FaUserFriends } from "react-icons/fa";
-import { GrView } from "react-icons/gr";
+import { GrFormView } from "react-icons/gr";
 import { MdOutlineTaskAlt } from "react-icons/md";
+import AdminCourseChart from "./AdminCourseChart";
+import AdminTaskChart from "./AdminTaskChart";
 
 const data = {
   Week: [
-    { id: '001', icon: GrView, rating: '1.5k', text: 'Courses view' },
-    { id: '002', icon: LuClock5, rating: '2.2k', text: 'Enrolled Students' },
-    { id: '003', icon: FaUserFriends, rating: '225', text: 'Average Time Spent' },
-    { id: '004', icon: MdOutlineTaskAlt, rating: '120', text: 'Total Time Spent' },
-    { id: '005', icon: LuClock12, rating: '12', text: 'Task Completion' },
+    { id: "001", icon: GrFormView, rating: "1.5k", text: "Courses view" },
+    { id: "002", icon: LuClock5, rating: "2.2k", text: "Enrolled Students" },
+    { id: "003", icon: FaUserFriends, rating: "225", text: "Average Time Spent" },
+    { id: "004", icon: MdOutlineTaskAlt, rating: "120", text: "Total Time Spent" },
+    { id: "005", icon: LuClock12, rating: "12", text: "Task Completion" },
   ],
   Month: [
-    { id: '001', icon: GrView, rating: '6k', text: 'Courses view' },
-    { id: '002', icon: LuClock5, rating: '8.8k', text: 'Enrolled Students' },
-    { id: '003', icon: FaUserFriends, rating: '900', text: 'Average Time Spent' },
-    { id: '004', icon: MdOutlineTaskAlt, rating: '480', text: 'Total Time Spent' },
-    { id: '005', icon: LuClock12, rating: '50', text: 'Task Completion' },
+    { id: "001", icon: GrFormView, rating: "2.5k", text: "Courses view" },
+    { id: "002", icon: LuClock5, rating: "2.3k", text: "Enrolled Students" },
+    { id: "003", icon: FaUserFriends, rating: "230", text: "Average Time Spent" },
+    { id: "004", icon: MdOutlineTaskAlt, rating: "125", text: "Total Time Spent" },
+    { id: "005", icon: LuClock12, rating: "14", text: "Task Completion" },
   ],
   Quarter: [
-    { id: '001', icon: GrView, rating: '18k', text: 'Courses view' },
-    { id: '002', icon: LuClock5, rating: '26.4k', text: 'Enrolled Students' },
-    { id: '003', icon: FaUserFriends, rating: '2700', text: 'Average Time Spent' },
-    { id: '004', icon: MdOutlineTaskAlt, rating: '1440', text: 'Total Time Spent' },
-    { id: '005', icon: LuClock12, rating: '150', text: 'Task Completion' },
+    { id: "001", icon: GrFormView, rating: "1.8k", text: "Courses view" },
+    { id: "002", icon: LuClock5, rating: "2.6k", text: "Enrolled Students" },
+    { id: "003", icon: FaUserFriends, rating: "241", text: "Average Time Spent" },
+    { id: "004", icon: MdOutlineTaskAlt, rating: "132", text: "Total Time Spent" },
+    { id: "005", icon: LuClock12, rating: "16", text: "Task Completion" },
   ],
   Year: [
-    { id: '001', icon: GrView, rating: '72k', text: 'Courses view' },
-    { id: '002', icon: LuClock5, rating: '105.6k', text: 'Enrolled Students' },
-    { id: '003', icon: FaUserFriends, rating: '10800', text: 'Average Time Spent' },
-    { id: '004', icon: MdOutlineTaskAlt, rating: '5760', text: 'Total Time Spent' },
-    { id: '005', icon: LuClock12, rating: '600', text: 'Task Completion' },
+    { id: "001", icon: GrFormView, rating: "1.9k", text: "Courses view" },
+    { id: "002", icon: LuClock5, rating: "2.1k", text: "Enrolled Students" },
+    { id: "003", icon: FaUserFriends, rating: "290", text: "Average Time Spent" },
+    { id: "004", icon: MdOutlineTaskAlt, rating: "120", text: "Total Time Spent" },
+    { id: "005", icon: LuClock12, rating: "10", text: "Task Completion" },
   ],
 };
 
 const AdminTopCard = () => {
   const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
-  const [currentView, setCurrentView] = useState('Week');
+  const [currentView, setCurrentView] = useState("Week");
 
   const handleButtonClick = (view) => {
     setCurrentView(view);
@@ -47,28 +49,24 @@ const AdminTopCard = () => {
 
   return (
     <>
-      <Box display={isSmallerThan768 ? "block" : "flex"} justifyContent={"space-between"} alignItems={isSmallerThan768 ? "start" : "center"}>
-        {/* text container */}
-        <Box ml={isSmallerThan768 ? '0' : '2px'} mt={isSmallerThan768 ? '8px' : '3px'} mr={isSmallerThan768 ? '10px':'0'}>
-          <Text><b>Overview</b></Text>
+      <Box display="flex" flexDirection="column" alignItems={isSmallerThan768 ? "center" : "flex-start"}>
+        <Box mt={isSmallerThan768 ? '8px' : '3px'} mb={isSmallerThan768 ? '10px':'0'}>
+          <Text fontSize={isSmallerThan768 ? 'xl' : 'lg'}><b>Overview</b></Text>
         </Box>
-        {/* button containers */}
-        <Box mt={isSmallerThan768 ? '12px' : '2px'} display="flex">
+        <Box mt={isSmallerThan768 ? '8px' : '2px'} display="flex" flexWrap="wrap" justifyContent={isSmallerThan768 ? "center" : "flex-start"}>        
           <Button
             mr={'5px'}
             backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
-            onClick={() => handleButtonClick('Week')}
-          >
-            {isSmallerThan768 ? "W" : "Week"}
-          </Button>
+            onClick={() => handleButtonClick("Week")}
+          >{isSmallerThan768 ? "W" : "Week"}</Button>
           <Button
             backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
             mr={'5px'}
-            onClick={() => handleButtonClick('Month')}
+            onClick={() => handleButtonClick("Month")}
           >
             {isSmallerThan768 ? "M" : "Month"}
           </Button>
@@ -77,7 +75,7 @@ const AdminTopCard = () => {
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
             mr={'5px'}
-            onClick={() => handleButtonClick('Quarter')}
+            onClick={() => handleButtonClick("Quarter")}
           >
             {isSmallerThan768 ? "Q" : "Quarter"}
           </Button>
@@ -85,7 +83,8 @@ const AdminTopCard = () => {
             backgroundColor="#fff"
             borderRadius="8px"
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
-            onClick={() => handleButtonClick('Year')}
+            mb={2}
+            onClick={() => handleButtonClick("Year")}
           >
             {isSmallerThan768 ? "Y" : "Year"}
           </Button>
@@ -103,7 +102,7 @@ const AdminTopCard = () => {
         overflowY={isSmallerThan768 ? 'auto' : 'hidden'}
         maxH={isSmallerThan768 ? '240px' : 'none'}
       >
-        {data[currentView].map(item => (
+        {data[currentView].map((item) => (
           <Box
             key={item.id}
             width={"190px"}
@@ -122,6 +121,24 @@ const AdminTopCard = () => {
             <Text fontSize={"13px"} padding={'5px'}>{item.text}</Text>
           </Box>
         ))}
+      </Box>
+      {/* Bar Chart container */}
+      <Box
+        display="flex"
+        flexDirection={isSmallerThan768 ? "column" : "row"}
+        alignItems="center"
+        justifyContent="space-around"
+        gap="10px"
+        p="12px"
+        overflowX={isSmallerThan768 ? "scroll" : "hidden"}
+        width="100%"
+      >
+        <Box minWidth={isSmallerThan768 ? "300px" : "auto"} mb={isSmallerThan768 ? "10px" : "0"}>
+          <AdminCourseChart chartType={currentView} />
+        </Box>
+        <Box minWidth={isSmallerThan768 ? "300px" : "auto"}>
+          <AdminTaskChart chartType={currentView} />
+        </Box>
       </Box>
     </>
   );

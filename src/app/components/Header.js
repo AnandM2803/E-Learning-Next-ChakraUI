@@ -10,13 +10,14 @@ const Header = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)"); 
 
   const handleAvatarClick = () => {
-    setShowLogoutButton(true);
+    setShowLogoutButton((prev) => !prev); 
   };
 
   const handleLogout = () => {
     router.push("/");
     setShowLogoutButton(false);
   };
+  
 
   return (
     <Box bg="#C3DDFD" color="white" p={{ base: "2", md: "4" }}>

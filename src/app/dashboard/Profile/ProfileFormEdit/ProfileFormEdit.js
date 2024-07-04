@@ -13,18 +13,20 @@ import {
   FormLabel,
   Input,
   Textarea,
-  Stack
+  Stack,
+  useMediaQuery
 } from '@chakra-ui/react'
 import { BiEdit } from "react-icons/bi";
 
 function ProfileFormEdit() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isMobile] = useMediaQuery("(max-width: 768px)")
   
   return (
     <>
       <Button onClick={onOpen}><BiEdit /></Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={isMobile ? "full" : "xl"}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Edit Profile</ModalHeader>

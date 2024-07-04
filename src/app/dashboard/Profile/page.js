@@ -1,12 +1,16 @@
-import { Box, VStack, Flex, Text, Image, SimpleGrid, Heading } from "@chakra-ui/react";
+'use client'
+import { Box, VStack, Flex, Text, Image, SimpleGrid, Heading, useMediaQuery } from "@chakra-ui/react";
 import UploadPic from "./UploadPic";
-import ProfileFormEdit from "./ProfileFormEdit/ProfileFormEdit";
+import ProfileTabs from "@/app/components/ProfileTabs/ProfileTabs";
+
 
 const ProfileDetails = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)")
+
   return (
-    <Box p={2} bg="gray.50" borderRadius="md" boxShadow="md" h={'87vh'} mt={1}>
-      <Flex direction='row' align="flex-start" gap={'10px'}>
-        <Box p={2} bg="white" borderRadius="md" boxShadow="md" h={'550px'} width={'270px'}>
+    <Box p={2} bg="gray.50" borderRadius="md" boxShadow="md" h={'87vh'} mt={1} overflowY={'scroll'}>
+      <Flex direction={isMobile ? 'column' : 'row'} align={isMobile ? "center" : "flex-start"} gap={isMobile ? '0' : '10px'}>
+        <Box p={2} bg="white" borderRadius="md" boxShadow="md" h={isMobile ? 'auto' : '550px'} width={isMobile ? '100%' : '270px'} mb={isMobile ? '4' : '0'}>
           <SimpleGrid columns={1} spacing={2}>
             <VStack spacing={3}>
               <Box position="relative" boxSize="80px">
@@ -27,44 +31,10 @@ const ProfileDetails = () => {
             </VStack>
           </SimpleGrid>
         </Box>
-        <Box p={1} mt={1} h={'540px'} w={'900px'}>
-          <VStack spacing={2} align="start" columnGap={'40px'} h={'538px'}>
+        <Box p={1} mt={isMobile ? '4' : '1'} h={isMobile ? 'auto' : '540px'} w={isMobile ? '100%' : '100%'}>
+          <VStack spacing={2} align="start" columnGap={isMobile ? '0' : '40px'} h={isMobile ? 'auto' : '538px'}>
             {/* profile container  */}
-            <Box bg="white" borderRadius="md" boxShadow="md" pl={2} p={2} w={'100%'}>
-              <Flex justifyContent="space-between" align="center" mb={2}>
-                <Heading size="md">Personal Information</Heading>
-                <ProfileFormEdit />
-              </Flex>
-              <SimpleGrid columns={1} spacing={2} pl={3}>
-                <VStack spacing={1} align="start">
-                  <Flex align="center">
-                    <Text fontWeight="bold" w="120px" fontSize={'13px'}>First Name</Text>
-                    <Text>:</Text>
-                    <Text ml={4} fontSize={'12px'}>Ananda</Text>
-                  </Flex>
-                  <Flex align="center">
-                    <Text fontWeight="bold" w="120px" fontSize={'13px'}>Last Name</Text>
-                    <Text>:</Text>
-                    <Text ml={4} fontSize={'12px'}>Kumar M</Text>
-                  </Flex>
-                  <Flex align="center">
-                    <Text fontWeight="bold" w="120px" fontSize={'13px'}>Email ID</Text>
-                    <Text>:</Text>
-                    <Text ml={4} fontSize={'12px'}>anand1999m@gmail.com</Text>
-                  </Flex>
-                  <Flex align="center">
-                    <Text fontWeight="bold" w="120px" fontSize={'13px'}>Phone No</Text>
-                    <Text>:</Text>
-                    <Text ml={4} fontSize={'12px'}>+91 9731091911</Text>
-                  </Flex>
-                  <Flex align="center">
-                    <Text fontWeight="bold" w="120px" fontSize={'13px'}>Address</Text>
-                    <Text>:</Text>
-                    <Text ml={4} fontSize={'12px'} flexWrap={'nowrap'}>T Dasarahalli Bangalore, Karnataka</Text>
-                  </Flex>
-                </VStack>
-              </SimpleGrid>
-            </Box>
+            <ProfileTabs />
             {/* hello container  */}
             <Box bg="white" borderRadius="md" boxShadow="md" w={'100%'} h={'370px'} p={2}>
                 

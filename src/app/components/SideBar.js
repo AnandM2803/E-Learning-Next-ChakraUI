@@ -150,12 +150,12 @@ const SideBar = () => {
 
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="#">
+            <Link href="/dashboard/Profile">
               <ImProfile />
             </Link>
             {isVisible && !isMobile && (
               <Box>
-                <Link href="#">Profile</Link>
+                <Link href="/dashboard/Profile">Profile</Link>
               </Box>
             )}
           </Box>

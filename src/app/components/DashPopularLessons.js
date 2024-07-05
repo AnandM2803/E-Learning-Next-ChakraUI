@@ -46,7 +46,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button>
+                       <Link href={'/dashboard/courses'}><Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button></Link> 
                         </Box>
                     </Box>
                 </Box>
@@ -77,7 +77,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} fontSize='12px' height={'28px'}>Visit</Button>
+                        <Link href={'/dashboard/courses'}><Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} fontSize='12px' height={'28px'}>Visit</Button></Link> 
                         </Box>
                     </Box>
                 </Box>
@@ -111,7 +111,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button>
+                            <Link href={'/dashboard/courses'}><Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button> </Link> 
                         </Box>
                     </Box>
                 </Box>
@@ -142,7 +142,7 @@ function DashPopularLessons() {
                                 </Box>
                             </Box>
                             <br />
-                            <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Enroll Now</Button>
+                            <Link href={'/dashboard/courses'}> <Button borderRadius={'20px'} backgroundColor={'#A7ECEE'} width={'100px'} height={'28px'} fontSize='12px'>Visit</Button> </Link> 
                         </Box>
                     </Box>
                 </Box>

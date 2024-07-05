@@ -36,8 +36,8 @@ const MyProgressChart = () => {
   return (
     <Grid
       templateRows="auto 1fr"
-      gap={3}
-      padding={isMobile ? 2 : 3}
+      gap={2}
+      padding={isMobile ? 1 : 2}
       backgroundColor="#fff"
       borderRadius="8px"
       boxShadow="0 4px 12px rgba(0,0,0,0.1)"
@@ -57,7 +57,7 @@ const MyProgressChart = () => {
               bottom: 18,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="0" />
             <XAxis dataKey="name" fontSize={isMobile ? "10px" : "12px"} />
             <YAxis
               label={{ value: "Points", angle: -90, position: "insideLeft", fontSize: isMobile ? "10px" : "12px" }}
@@ -65,8 +65,8 @@ const MyProgressChart = () => {
             />
             <Tooltip contentStyle={{ fontSize: isMobile ? "10px" : "12px" }} />
             <Legend verticalAlign="top" wrapperStyle={{ fontSize: isMobile ? "10px" : "12px" }} />
-            <Bar dataKey="Completed" fill="#4a90e2" barSize={isMobile ? 10 : 12} name="Completed Courses" />
-            <Bar dataKey="InProgress" fill="#50e3c2" barSize={isMobile ? 10 : 12} name="Courses in Progress" />
+            <Bar dataKey="Completed" fill="#C3DDFD" barSize={isMobile ? 8 : 10} name="Completed Courses" radius={[10, 10, 0, 0]}/>
+            <Bar dataKey="InProgress" fill="#4483F8" barSize={isMobile ? 8 : 10} name="Courses in Progress" radius={[10, 10, 0, 0]}/>
           </BarChart>
         </ResponsiveContainer>
       </Box>

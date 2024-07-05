@@ -7,7 +7,7 @@ import DashAccordion from '../components/DashAccordion';
 
 const Dashboard = () => {
   return (
-    <Box h='90vh' position="relative" bg="#EBF7FF">
+    <Box h='87vh' position="relative" bg="#EBF7FF">
       <Flex 
         justify="space-between" 
         alignItems="flex-start" 
@@ -43,7 +43,7 @@ const Dashboard = () => {
         top={['0', '0', '220px']} 
         right={['0', '0', '20px']} 
         width={['100%', '100%', '320px']} 
-        height={['auto', 'auto', '360px']} 
+        height={['auto', 'auto', 'fit-content']} 
         p="4"
         backgroundColor="#fff"
         borderRadius="8px"

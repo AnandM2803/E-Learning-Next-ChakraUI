@@ -1,7 +1,10 @@
 'use client'
-import { FormControl, FormLabel, Box, Input, Button, VStack } from "@chakra-ui/react";
+import { FormControl, FormLabel, Box, Input, Button, VStack, useMediaQuery } from "@chakra-ui/react";
 
 const PasswordReset = () => {
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isTablet] = useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
+
   return (
     <Box
       maxW="xs"
@@ -14,38 +17,50 @@ const PasswordReset = () => {
       bg="white"
     >
       <form>
-        <VStack spacing={2}>
+        <VStack spacing={4}>
           <FormControl isRequired>
-            <FormLabel fontSize={'13px'}>Current Password</FormLabel>
-            <Input width={'100%'} h={'33px'}
+            <FormLabel fontSize={isMobile || isTablet ? 'sm' : 'md'}>Current Password</FormLabel>
+            <Input
+              width="100%"
+              h="33px"
               placeholder="Enter current password"
               type="password"
               name="currentPassword"
-              fontSize={'13px'}
+              fontSize={isMobile || isTablet ? 'sm' : 'md'}
               _placeholder={{ color: "gray.500" }}
             />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel fontSize={'13px'}>New Password</FormLabel>
-            <Input width={'100%'} h={'33px'}
+            <FormLabel fontSize={isMobile || isTablet ? 'sm' : 'md'}>New Password</FormLabel>
+            <Input
+              width="100%"
+              h="33px"
               placeholder="Enter new password"
               type="password"
               name="newPassword"
-              fontSize={'13px'}
+              fontSize={isMobile || isTablet ? 'sm' : 'md'}
               _placeholder={{ color: "gray.500" }}
             />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel fontSize={'13px'}>Confirm Password</FormLabel>
-            <Input width={'100%'} h={'33px'}
+            <FormLabel fontSize={isMobile || isTablet ? 'sm' : 'md'}>Confirm Password</FormLabel>
+            <Input
+              width="100%"
+              h="33px"
               placeholder="Enter confirm password"
               type="password"
               name="confirmPassword"
-              fontSize={'13px'}
+              fontSize={isMobile || isTablet ? 'sm' : 'md'}
               _placeholder={{ color: "gray.500" }}
             />
           </FormControl>
-          <Button colorScheme="blue" width="fit-content" h={'25px'} type="submit" fontSize={'13px'}>
+          <Button
+            colorScheme="blue"
+            width="fit-content"
+            h="25px"
+            type="submit"
+            fontSize={isMobile || isTablet ? 'sm' : 'md'}
+          >
             Reset Password
           </Button>
         </VStack>

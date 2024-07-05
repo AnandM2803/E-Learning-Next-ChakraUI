@@ -27,7 +27,9 @@ const SideBar = () => {
   const boxcontainer = {
     w: isVisible && !isMobile ? "220px" : "80px",
     bg: "#C3DDFD",
-    color: "black"
+    color: "black",
+    height:'100vh',
+    
   };
 
   const hamburgerStyles = {

@@ -108,9 +108,11 @@ const CourseCard = ({
           </Text>
           <Button
             size="xs"
-            colorScheme="teal"
+            bg='#C3DDFD'
+            // colorScheme="#C3DDFD"
             mt="2px"
             onClick={handleEnrollClick}
+            ml={'50px'}
           >
             Enroll
           </Button>
@@ -193,7 +195,7 @@ const CourseCards = () => {
           <MenuButton
             as={RotatedIconButton}
             icon={<AiOutlineFilter />}
-            colorScheme="teal"
+             bg='#C3DDFD'
           />
           <MenuList id="coursemenulist">
             <MenuItem onClick={() => setFilter("all")}>All</MenuItem>
@@ -205,7 +207,7 @@ const CourseCards = () => {
           <MenuButton
             as={IconButton}
             icon={<AiOutlineSortAscending />}
-            colorScheme="teal"
+           bg='#C3DDFD'
           />
           <MenuList>
             <MenuItem onClick={() => setSort("name-asc")}>

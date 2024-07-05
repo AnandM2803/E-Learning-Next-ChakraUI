@@ -38,7 +38,7 @@ function Login() {
       validationError.password = "Password is required";
     } else if (!/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(data.password)) {
       validationError.password =
-        "Password length should be 6 characters long and contain at least one letter and one number";
+        "Proper Password Required";
     }
 
     setError(validationError);

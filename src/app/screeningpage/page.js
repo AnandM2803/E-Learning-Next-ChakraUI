@@ -24,7 +24,7 @@ function AccessPage() {
       >
         {isMobile ? (
           <VStack spacing={12} justify="center"> 
-            <Link href="#">
+            <Link href="/dashboard_admin">
               <Button
                 fontSize="1rem"
                 px="3"

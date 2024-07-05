@@ -1,5 +1,6 @@
 "use client";
 import {
+  Box,
   Text,
   Grid,
   FormControl,
@@ -7,8 +8,6 @@ import {
   Button,
   Input,
   Link,
-  Alert,
-  AlertIcon,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -49,10 +48,7 @@ function Login() {
         password: "",
       });
 
-      <Alert status='success' variant='solid'>
-      <AlertIcon />
-      Logined Successfully
-    </Alert>
+      alert("Logged in Successfully");
       router.push("/screeningpage");
     }
   };

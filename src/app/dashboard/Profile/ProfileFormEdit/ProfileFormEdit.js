@@ -65,6 +65,18 @@ function ProfileFormEdit() {
                     borderRadius={'10px'}
                   />
                 </FormControl>
+
+                <FormControl isRequired>
+                  <FormLabel fontSize={'14px'}>User Name</FormLabel>
+                  <Input 
+                    placeholder='user name' 
+                    type='text' 
+                    name='user name'
+                    _placeholder={{ color: 'gray.500' }}
+                    size={isMobile ? "xs" : "sm"} 
+                    borderRadius={'10px'}
+                  />
+                </FormControl>
                 
                 <FormControl isRequired>
                   <FormLabel fontSize={'14px'}>Email</FormLabel>

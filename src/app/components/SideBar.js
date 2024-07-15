@@ -14,6 +14,7 @@ import { FaDiscourse } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { IoMdLogOut } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { MdIncompleteCircle } from "react-icons/md";
 import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
@@ -122,6 +123,17 @@ const SideBar = () => {
             {isVisible && !isMobile && (
               <Box>
                 <Link href="/dashboard/myprogress">My Progress</Link>
+              </Box>
+            )}
+          </Box>
+
+          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
+            <Link href="/dashboard/C_Completed">
+            <MdIncompleteCircle />
+            </Link>
+            {isVisible && !isMobile && (
+              <Box>
+                <Link href="/dashboard/C_Completed">C Completed</Link>
               </Box>
             )}
           </Box>

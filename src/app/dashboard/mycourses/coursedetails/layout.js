@@ -19,6 +19,7 @@ import { useSearchParams } from "next/navigation";
 import Courses from "../../../../../public/courselist";
 import CourseChapter from "@/app/components/CourseChapter";
 import ShareIcon from "../shareicons/ShareIcons";
+import TextEditor from "../../Profile/TextEditor/TextEditor";
 
 const ReactProjectDescription = ({ children }) => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -35,7 +36,7 @@ const ReactProjectDescription = ({ children }) => {
   }
 
   return (
-    <Box p={4} position="relative" bg="#F9FBE7">
+    <Box p={4} position="relative" bg="#F9FBE7" h={'87vh'} overflowY={'scroll'}>
       <Flex
         columnGap="20px"
         flexDirection={{ base: "column", md: "row" }}
@@ -62,7 +63,7 @@ const ReactProjectDescription = ({ children }) => {
               </Flex>
             </Flex>
             {/* video component */}
-            <Box width="100%" height="315px" mt={0}>
+            <Box width={["auto", "100%"]} height={{md:"315px",base:'auto'}} mt={{ base: 2, md: 0 }} p={'5px'}>
               {children}
             </Box>
             {/* Tab List */}
@@ -70,7 +71,7 @@ const ReactProjectDescription = ({ children }) => {
               index={tabIndex}
               onChange={(index) => setTabIndex(index)}
               variant="unstyled"
-              mt="20px"
+              mt={{ base: 2, md: 0 }}
               flex="1"
               w="100%"
             >
@@ -153,7 +154,7 @@ const ReactProjectDescription = ({ children }) => {
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>{selectedcourse.tabCourseReviewe}</p>
+                  <TextEditor />
                 </TabPanel>
                 <TabPanel
                   backgroundColor="#fff"

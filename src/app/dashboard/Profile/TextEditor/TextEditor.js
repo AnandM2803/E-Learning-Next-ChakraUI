@@ -1,14 +1,8 @@
-'use client'
 import { useState } from 'react';
 import { Box, Button, ButtonGroup, Textarea, Select, useMediaQuery } from '@chakra-ui/react';
 import { BiBold } from "react-icons/bi";
-import { MdFormatItalic } from "react-icons/md";
-import { MdFormatUnderlined } from "react-icons/md";
-import { MdOutlineStrikethroughS } from "react-icons/md";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAlignCenter } from "react-icons/fa";
-import { FaChevronRight } from "react-icons/fa";
-
+import { MdFormatItalic, MdFormatUnderlined, MdOutlineStrikethroughS } from "react-icons/md";
+import { FaAngleLeft, FaAlignCenter, FaChevronRight } from "react-icons/fa";
 
 function TextEditor() {
   const [text, setText] = useState('');
@@ -21,10 +15,8 @@ function TextEditor() {
   const [textColor, setTextColor] = useState('#000000');
   
   const [isLargerThan480] = useMediaQuery('(min-width: 480px)');
-  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 
   const handleTextChange = (e) => setText(e.target.value);
-
   const toggleBold = () => setIsBold(!isBold);
   const toggleItalic = () => setIsItalic(!isItalic);
   const toggleUnderline = () => setIsUnderline(!isUnderline);
@@ -46,7 +38,7 @@ function TextEditor() {
 
   return (
     <Box p={2} w="100%" mx="auto">
-      <ButtonGroup mb={2} display="flex" flexWrap="wrap" justifyContent="center">
+      <ButtonGroup mb={2} display="flex" justifyContent="center">
         <Button onClick={toggleBold} colorScheme={isBold ? 'teal' : 'gray'} mx={0.2} size="xs">
           <BiBold />
         </Button>
@@ -68,13 +60,7 @@ function TextEditor() {
         <Button onClick={() => setAlignment('right')} colorScheme={textAlign === 'right' ? 'teal' : 'gray'} mx={1} size="xs">
           <FaChevronRight />
         </Button>
-       
-        <Select value={textSize} onChange={handleTextSizeChange} width="auto" ml={isLargerThan480 ? 2 : 1} mb={isLargerThan480 ? 0 : 2} size="xs">
-          <option value="2px">2px</option>
-          <option value="4px">4px</option>
-          <option value="6px">6px</option>
-          <option value="8px">8px</option>
-          <option value="10px">10px</option>
+        <Select value={textSize} onChange={handleTextSizeChange} width="auto" ml={isLargerThan480 ? 2 : 1} size="xs">
           <option value="12px">12px</option>
           <option value="14px">14px</option>
           <option value="16px">16px</option>
@@ -89,7 +75,7 @@ function TextEditor() {
           value={textColor}
           onChange={handleTextColorChange}
           style={{ marginLeft: isLargerThan480 ? '8px' : '4px', border: 'none', backgroundColor: 'transparent', height: '30px', width: '30px' }}
-          />
+        />
       </ButtonGroup>
       <Textarea 
         value={text}

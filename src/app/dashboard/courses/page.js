@@ -69,6 +69,7 @@ const CourseCard = ({
       mr="8px"
       overflowY="visible"
       id="courseboxcontainer"
+      ml={["70px","auto"]}
     >
       
         <Image
@@ -92,13 +93,13 @@ const CourseCard = ({
             <Text fontSize="xs" color="gray">
               {ratings}
             </Text>
-            {[...Array(5)].map((_, i) => (
+            {/* {[...Array(5)].map((_, i) => (
               <AiFillStar
                 key={i}
                 size="12px"
                 color={i < Math.round(ratings) ? "teal" : "gray"}
               />
-            ))}
+            ))} */}
           </HStack>
           <Text fontSize="xs" fontWeight="bold">
             {formattedFees}
@@ -178,11 +179,12 @@ const CourseCards = () => {
     baseStyle: {
       width: "80%", 
       padding: "0 1px", 
+      mr: "40px"                         
     },
   });
 
   return (
-    <Box overflowY="scroll" id="coursebox2">
+    <Box overflowY="scroll" id="coursebox2" >
       <HStack
         justify={isMobile ? "center" : "flex-end"} 
         p={1}
@@ -242,7 +244,10 @@ const CourseCards = () => {
           infinite
           keyBoardControl
           containerStyle={carouselContainerStyle}
-          itemClass="carousel-item-padding-10-px"
+          itemClass="carousel-item-padding-10-px"          
+          mr= "40px"
+          
+          
         >
           {sortedCourses.map((course, index) => (
             <CarouselContainer key={index} id="carouselcontainer">
@@ -259,7 +264,7 @@ const CourseCards = () => {
           ))}
         </Carousel>
       ) : (
-        <Wrap spacing={4} mt={1} justify="center" h="75vh" id="coursewrap1">
+        <Wrap spacing={4} mt={1} justify="center" h="75vh" id="coursewrap1" >
           {sortedCourses.map((course, index) => (
             <WrapItem key={index}>
               <CourseCard
@@ -271,9 +276,10 @@ const CourseCards = () => {
                 image={course.image}
                 description={course.description}
               />
-            </WrapItem>
-          ))}
-        </Wrap>
+            </WrapItem> 
+          ))}5
+        </Wrap>   
+
       )}
     </Box>
   );

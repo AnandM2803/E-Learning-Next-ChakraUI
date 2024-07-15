@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-function Signup() {
+function AdminSignUp() {
   const router = useRouter();
   const [data, setData] = useState({
     firstname: "",
@@ -62,12 +62,13 @@ function Signup() {
   };
 
   return (
-    <Grid placeItems="center"  >
+    <Grid placeItems="center">
       <Box
         bg="white"
         p={2}
-        boxShadow="md"
-        rounded="lg"
+        borderRadius="md"
+        boxShadow="lg"
+        
       >
         <form onSubmit={handleSubmit}>
           <FormControl mb={4} isInvalid={error.firstname}>
@@ -82,7 +83,7 @@ function Signup() {
               borderRadius="md"
             />
             {error.firstname && (
-              <Text color="red.500">{error.firstname}</Text>
+              <Text color="red.500" mt={2}>{error.firstname}</Text>
             )}
           </FormControl>
           <FormControl mb={4} isInvalid={error.lastname}>
@@ -91,13 +92,13 @@ function Signup() {
               value={data.lastname}
               id="lastname"
               type="text"
-              placeholder="Enter last name"
+              placeholder="Enter lastname"
               name="lastname"
               onChange={handleChange}
               borderRadius="md"
             />
             {error.lastname && (
-              <Text color="red.500">{error.lastname}</Text>
+              <Text color="red.500" mt={2}>{error.lastname}</Text>
             )}
           </FormControl>
           <FormControl mb={4} isInvalid={error.email}>
@@ -106,13 +107,13 @@ function Signup() {
               value={data.email}
               id="email"
               type="email"
-              placeholder="Enter student email"
+              placeholder="Enter admin email"
               name="email"
               onChange={handleChange}
               borderRadius="md"
             />
             {error.email && (
-              <Text color="red.500">{error.email}</Text>
+              <Text color="red.500" mt={2}>{error.email}</Text>
             )}
           </FormControl>
           <FormControl mb={4} isInvalid={error.password}>
@@ -127,7 +128,7 @@ function Signup() {
                 onChange={handleChange}
                 borderRadius="md"
               />
-              <InputRightElement>
+              <InputRightElement width="4.5rem">
                 <IconButton
                   h="1.75rem"
                   size="sm"
@@ -137,7 +138,7 @@ function Signup() {
               </InputRightElement>
             </InputGroup>
             {error.password && (
-              <Text color="red.500">{error.password}</Text>
+              <Text color="red.500" mt={2}>{error.password}</Text>
             )}
           </FormControl>
           <FormControl mb={4} isInvalid={error.confirmPassword}>
@@ -152,7 +153,7 @@ function Signup() {
                 onChange={handleChange}
                 borderRadius="md"
               />
-              <InputRightElement>
+              <InputRightElement width="4.5rem">
                 <IconButton
                   h="1.75rem"
                   size="sm"
@@ -162,7 +163,7 @@ function Signup() {
               </InputRightElement>
             </InputGroup>
             {error.confirmPassword && (
-              <Text color="red.500">{error.confirmPassword}</Text>
+              <Text color="red.500" mt={2}>{error.confirmPassword}</Text>
             )}
           </FormControl>
           <Button
@@ -185,4 +186,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default AdminSignUp;

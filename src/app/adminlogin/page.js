@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-function Login() {
+function AdminLogin() {
   const router = useRouter();
   const [data, setData] = useState({
     email: "",
@@ -53,7 +53,7 @@ function Login() {
       });
 
       alert("Logged in Successfully");
-      router.push("/dashboard");
+      router.push("/screeningpage");
     }
   };
 
@@ -80,7 +80,7 @@ function Login() {
             value={data.email}
             id="email"
             type="email"
-            placeholder="Enter student email"
+            placeholder="Enter admin email"
             name="email"
             onChange={handleChange}
           />
@@ -129,4 +129,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default AdminLogin;

@@ -7,7 +7,7 @@ import DashAccordion from '../components/DashAccordion';
 
 const Dashboard = () => {
   return (
-    <Box position="relative" bg="#EBF7FF" overflowY={'scroll'} h={'87vh'} overflowX={'unset'}>
+    <Box position="relative" bg="#EBF7FF" overflowY={'scroll'} h={'87vh'}>
       <Flex 
         justify="space-between" 
         alignItems="flex-start" 
@@ -69,4 +69,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

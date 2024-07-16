@@ -26,17 +26,16 @@ const SideBar = () => {
   };
 
   const boxcontainer = {
-    w: isVisible && !isMobile ? "220px" : "80px",
+    w: isVisible && !isMobile ? "250px" : "80px",
     bg: "#C3DDFD",
     color: "black",
-    height:'100vh',
-    
+    height: "100vh",
   };
 
   const hamburgerStyles = {
     cursor: "pointer",
     fontSize: "30px",
-    width:'20%',
+    width: '20%',
     transition: "color 0.3s ease, transform 0.3s ease",
     _hover: {
       transform: "scale(1)",
@@ -46,21 +45,21 @@ const SideBar = () => {
 
   return (
     <Box sx={boxcontainer} id="maincontainer">
-      <Box 
-        color="black" 
-        position="relative" 
-        left="8px" 
-        top="80px" 
+      <Box
+        color="black"
+        position="relative"
+        left="8px"
+        top="80px"
         onClick={toggleVisibility}
         sx={hamburgerStyles}
       >
-       <RxHamburgerMenu size={'25px'}/>
+        <RxHamburgerMenu size={'25px'} />
       </Box>
       <VStack align="start" fontSize="17px" className={styles.sidelink} mt="100px" id="vstackcontainer">
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" alignItems="center" justifyContent="start" columnGap="5px">
             <Link href="/dashboard" display='flex'>
-              <MdSpaceDashboard size="17"  />
+              <MdSpaceDashboard size="17" />
             </Link>
             {isVisible && !isMobile && (
               <Box>
@@ -71,7 +70,7 @@ const SideBar = () => {
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
             <Link href="/dashboard/courses">
-            <SiCoursera />
+              <SiCoursera />
             </Link>
             {isVisible && !isMobile && (
               <Box>
@@ -79,10 +78,10 @@ const SideBar = () => {
               </Box>
             )}
           </Box>
-   
+
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
             <Link href="/dashboard/exams">
-            <PiExamFill />
+              <PiExamFill />
             </Link>
             {isVisible && !isMobile && (
               <Box>
@@ -90,11 +89,10 @@ const SideBar = () => {
               </Box>
             )}
           </Box>
-       
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
             <Link href="/dashboard/training">
-            <MdModelTraining />
+              <MdModelTraining />
             </Link>
             {isVisible && !isMobile && (
               <Box>
@@ -105,7 +103,7 @@ const SideBar = () => {
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
             <Link href="/dashboard/mycourses">
-            <FaDiscourse />
+              <FaDiscourse />
             </Link>
             {isVisible && !isMobile && (
               <Box>
@@ -113,54 +111,51 @@ const SideBar = () => {
               </Box>
             )}
           </Box>
-
         </Box>
 
-          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/myprogress">
+        <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
+          <Link href="/dashboard/myprogress">
             <GiProgression />
-            </Link>
-            {isVisible && !isMobile && (
-              <Box>
-                <Link href="/dashboard/myprogress">My Progress</Link>
-              </Box>
-            )}
-          </Box>
+          </Link>
+          {isVisible && !isMobile && (
+            <Box>
+              <Link href="/dashboard/myprogress">My Progress</Link>
+            </Box>
+          )}
+        </Box>
 
-          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/C_Completed">
+        <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
+          <Link href="/dashboard/C_Completed">
             <MdIncompleteCircle />
-            </Link>
-            {isVisible && !isMobile && (
-              <Box>
-                <Link href="/dashboard/C_Completed">C Completed</Link>
-              </Box>
-            )}
-          </Box>
+          </Link>
+          {isVisible && !isMobile && (
+            <Box>
+              <Link href="/dashboard/C_Completed" whiteSpace="nowrap">Course Completed</Link>
+            </Box>
+          )}
+        </Box>
 
-          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/getcertificate">
+        <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
+          <Link href="/dashboard/getcertificate">
             <PiCertificateFill />
-            </Link>
-            {isVisible && !isMobile && (
-              <Box>
-                <Link href="/dashboard/getcertificate">Get Certificate</Link>
-              </Box>
-            )}
-          </Box>  
+          </Link>
+          {isVisible && !isMobile && (
+            <Box>
+              <Link href="/dashboard/getcertificate">Get Certificate</Link>
+            </Box>
+          )}
+        </Box>
 
-          <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-            <Link href="/dashboard/subscription">
+        <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
+          <Link href="/dashboard/subscription">
             <PiSubtitlesFill />
-            </Link>
-            {isVisible && !isMobile && (
-              <Box>
-                <Link href="/dashboard/subscription">Subscription</Link>
-              </Box>
-            )}
-          </Box>
-
-         
+          </Link>
+          {isVisible && !isMobile && (
+            <Box>
+              <Link href="/dashboard/subscription">Subscription</Link>
+            </Box>
+          )}
+        </Box>
 
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">

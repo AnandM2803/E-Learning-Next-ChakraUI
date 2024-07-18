@@ -38,6 +38,7 @@ const MyProgressChart = () => {
   return (
     <Grid
       templateRows="auto 1fr"
+      width={'400px'}
       gap={2}
       padding={isMobile ? 1 : 2}
       backgroundColor="#fff"

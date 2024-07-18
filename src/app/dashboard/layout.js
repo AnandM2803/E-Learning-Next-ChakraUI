@@ -6,7 +6,7 @@ import Header from "../components/Header";
 function Layout({ children }) {
   return (
     <ChakraProvider>
-      <Flex columnGap='8px'>
+      <Flex columnGap='7px'>
         <SideBar />
         <Box rowGap='7px' display='flex' flexDirection='column'  w='100%' >
           <Header />

@@ -121,9 +121,6 @@ function InstructorLogin() {
             Login
           </Button>
         </FormControl>
-        <Link href="/signup" color="teal.500" mt={4} display="block" textAlign="center">
-          Don&apos;t have an account?
-        </Link>
       </form>
     </Grid>
   );

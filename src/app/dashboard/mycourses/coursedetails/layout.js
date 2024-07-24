@@ -23,8 +23,6 @@ import TextEditor from "../../Profile/TextEditor/TextEditor";
 
 const ReactProjectDescription = ({ children }) => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [showShareBox, setShowShareBox] = useState(false);
-  const [copyButtonText, setCopyButtonText] = useState("Copy");
   const searchparams = useSearchParams();
 
   const selectedcourse = Courses.find(

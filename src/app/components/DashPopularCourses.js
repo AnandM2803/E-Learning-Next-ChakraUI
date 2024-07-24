@@ -17,7 +17,7 @@ const DashPopularCourse = () => {
       p={2}
       maxW={isMobile ? "100%" : isTablet ? "500px" : "700px"}
       h={'fit-content'}
-      overflowY={isMobile ? "auto" : "hidden"} // Adjust overflow based on mobile view
+      overflowY={isMobile ? "auto" : "hidden"}
     >
       <HStack justifyContent="space-between" mb={2}>
         <Text fontSize="15px" fontWeight="bold">Popular Courses</Text>
@@ -27,7 +27,7 @@ const DashPopularCourse = () => {
       </HStack>
       <Box overflowX="auto" maxW="100%" >
         <HStack spacing={4} minWidth="max-content" flexDirection={isMobile ? "column" : "row"}>
-          {Courses.map((details, index) => (
+          {Courses.slice(0,6).map((details, index) => (
             <Box 
               key={index}
               maxW={isMobile ? "100%" : "200px"}

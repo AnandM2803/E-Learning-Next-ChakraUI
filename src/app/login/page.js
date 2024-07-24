@@ -2,12 +2,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from "next/navigation";
-import { Box, Button, FormControl, FormLabel, Input, Heading, useToast, Link } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputProps, InputRightElement, useToast, IconButton } from '@chakra-ui/react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
 
   const handleLogin = async (e) => {
@@ -52,25 +54,33 @@ function Login() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="Enter student email"
           />
         </FormControl>
         <FormControl id="password" mb={6} isRequired>
           <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-          />
+          <InputGroup>
+            <Input
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+            />
+            <InputRightElement>
+              <IconButton
+                variant="link"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </InputRightElement>
+          </InputGroup>
         </FormControl>
         <Button colorScheme="teal" type="submit" width="full">Login</Button>
       </form>
-      <Link href="/signup" color="teal.500" mt={4} display="block" textAlign="center">
-        Don't have an account? Sign Up
-      </Link>
     </Box>
   );
 }
 
 export default Login;
+

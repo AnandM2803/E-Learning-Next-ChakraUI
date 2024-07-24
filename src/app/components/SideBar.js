@@ -58,7 +58,7 @@ const SideBar = () => {
       <VStack align="start" fontSize="17px" className={styles.sidelink} mt="100px" id="vstackcontainer">
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" alignItems="center" justifyContent="start" columnGap="5px">
-            <Link href="/dashboard" display='flex'>
+            <Link href="/dashboard" display='flex' title='Dashboard'>
               <MdSpaceDashboard size="17" />
             </Link>
             {isVisible && !isMobile && (
@@ -69,7 +69,7 @@ const SideBar = () => {
           </Box>
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/courses">
+            <Link href="/dashboard/courses" title='Courses'>
               <SiCoursera />
             </Link>
             {isVisible && !isMobile && (
@@ -80,7 +80,7 @@ const SideBar = () => {
           </Box>
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/exams">
+            <Link href="/dashboard/exams" title='Exams'>
               <PiExamFill />
             </Link>
             {isVisible && !isMobile && (
@@ -91,7 +91,7 @@ const SideBar = () => {
           </Box>
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/training">
+            <Link href="/dashboard/training" title='Training'>
               <MdModelTraining />
             </Link>
             {isVisible && !isMobile && (
@@ -102,7 +102,7 @@ const SideBar = () => {
           </Box>
 
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/mycourses">
+            <Link href="/dashboard/mycourses" title='My Courses'>
               <FaDiscourse />
             </Link>
             {isVisible && !isMobile && (
@@ -114,7 +114,7 @@ const SideBar = () => {
         </Box>
 
         <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-          <Link href="/dashboard/myprogress">
+          <Link href="/dashboard/myprogress" title='My Progress'>
             <GiProgression />
           </Link>
           {isVisible && !isMobile && (
@@ -125,7 +125,7 @@ const SideBar = () => {
         </Box>
 
         <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-          <Link href="/dashboard/C_Completed">
+          <Link href="/dashboard/C_Completed" title="Course Completed">
             <MdIncompleteCircle />
           </Link>
           {isVisible && !isMobile && (
@@ -136,7 +136,7 @@ const SideBar = () => {
         </Box>
 
         <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-          <Link href="/dashboard/getcertificate">
+          <Link href="/dashboard/getcertificate" title="Get Certificate">
             <PiCertificateFill />
           </Link>
           {isVisible && !isMobile && (
@@ -147,7 +147,7 @@ const SideBar = () => {
         </Box>
 
         <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start" ml='6px'>
-          <Link href="/dashboard/subscription">
+          <Link href="/dashboard/subscription" title="Subscription">
             <PiSubtitlesFill />
           </Link>
           {isVisible && !isMobile && (
@@ -159,7 +159,7 @@ const SideBar = () => {
 
         <Box ml="9px" display="flex" flexDirection="column" rowGap="10px">
           <Box display="flex" columnGap="5px" alignItems="center" justifyContent="start">
-            <Link href="/dashboard/Profile">
+            <Link href="/dashboard/Profile" title='Profile'>
               <ImProfile />
             </Link>
             {isVisible && !isMobile && (

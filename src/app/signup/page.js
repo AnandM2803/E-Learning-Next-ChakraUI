@@ -1,188 +1,185 @@
-'use client'
-import {
-  Box,
-  Text,
-  Grid,
-  FormControl,
-  FormLabel,
-  Button,
-  Input,
-  Link as ChakraLink,
-  InputGroup,
-  InputRightElement,
-  IconButton,
-} from "@chakra-ui/react";
-import { useState } from "react";
+'use client';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputProps, InputRightElement, VStack, useToast, IconButton } from '@chakra-ui/react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
-function Signup() {
-  const router = useRouter();
-  const [data, setData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+const Signup = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    password: '',
+    phone: '',
+    address: ''
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState({});
+  const router = useRouter();
+  const toast = useToast();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const validationError = {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Form Data:', formData);
 
-    // Basic validation
-    if (!data.firstname) validationError.firstname = "First name is required";
-    if (!data.lastname) validationError.lastname = "Last name is required";
-    if (!data.email) validationError.email = "Email is required";
-    if (!data.password) validationError.password = "Password is required";
-    if (data.password !== data.confirmPassword)
-      validationError.confirmPassword = "Passwords do not match";
-
-    setError(validationError);
-
-    if (Object.keys(validationError).length === 0) {
-      setData({
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
+    try {
+      const response = await fetch('http://localhost:5000/api/studentsignupauth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+        credentials: 'include'
       });
 
-      alert("Form Submitted Successfully");
-      router.push('/login');
+      if (response.ok) {
+        toast({
+          title: 'Signup Successful.',
+          description: 'You have successfully signed up.',
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+        });
+        router.push('/login');
+      } else {
+        const errorData = await response.json();
+        toast({
+          title: 'Signup Failed.',
+          description: errorData.msg || 'An error occurred during signup.',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Signup Error.',
+        description: 'An unexpected error occurred. Please try again.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
 
   return (
-    <Grid placeItems="center"  >
-      <Box
-        bg="white"
-        p={2}
-        boxShadow="md"
-        rounded="lg"
-      >
-        <form onSubmit={handleSubmit}>
-          <FormControl mb={4} isInvalid={error.firstname}>
-            <FormLabel htmlFor="firstname">First Name</FormLabel>
+    <Box w="300px" mx="auto">
+      <form onSubmit={handleSubmit}>
+        <VStack spacing="4">
+          <FormControl id="firstName" isRequired>
+            <FormLabel fontSize="sm">First Name</FormLabel>
             <Input
-              value={data.firstname}
-              id="firstname"
+              placeholder='Enter student first name'
               type="text"
-              placeholder="Enter first name"
-              name="firstname"
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
-              borderRadius="md"
+              size="sm"
+              height="35px"
             />
-            {error.firstname && (
-              <Text color="red.500">{error.firstname}</Text>
-            )}
           </FormControl>
-          <FormControl mb={4} isInvalid={error.lastname}>
-            <FormLabel htmlFor="lastname">Last Name</FormLabel>
+          <FormControl id="lastName" isRequired>
+            <FormLabel fontSize="sm">Last Name</FormLabel>
             <Input
-              value={data.lastname}
-              id="lastname"
+              placeholder="Enter student last name"
               type="text"
-              placeholder="Enter last name"
-              name="lastname"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
-              borderRadius="md"
+              size="sm"
+              height="35px"
             />
-            {error.lastname && (
-              <Text color="red.500">{error.lastname}</Text>
-            )}
           </FormControl>
-          <FormControl mb={4} isInvalid={error.email}>
-            <FormLabel htmlFor="email">Email</FormLabel>
+          <FormControl id="userName" isRequired>
+            <FormLabel fontSize="sm">Username</FormLabel>
             <Input
-              value={data.email}
-              id="email"
-              type="email"
+              placeholder="Enter student username"
+              type="text"
+              name="userName"
+              value={formData.userName}
+              onChange={handleChange}
+              size="sm"
+              height="35px"
+            />
+          </FormControl>
+          <FormControl id="email" isRequired>
+            <FormLabel fontSize="sm">Email</FormLabel>
+            <Input
               placeholder="Enter student email"
+              type="email"
               name="email"
+              value={formData.email}
               onChange={handleChange}
-              borderRadius="md"
+              size="sm"
+              height="35px"
             />
-            {error.email && (
-              <Text color="red.500">{error.email}</Text>
-            )}
           </FormControl>
-          <FormControl mb={4} isInvalid={error.password}>
-            <FormLabel htmlFor="password">Password</FormLabel>
+          <FormControl id="password" isRequired>
+            <FormLabel fontSize="sm">Password</FormLabel>
             <InputGroup>
               <Input
-                value={data.password}
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
+                placeholder="Enter student password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
+                value={formData.password}
                 onChange={handleChange}
-                borderRadius="md"
+                size="sm"
+                height="35px"
               />
               <InputRightElement>
                 <IconButton
-                  h="1.75rem"
-                  size="sm"
-                  onClick={() => setShowPassword(!showPassword)}
+                  variant="link"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                   icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                  onClick={() => setShowPassword(!showPassword)}
                 />
               </InputRightElement>
             </InputGroup>
-            {error.password && (
-              <Text color="red.500">{error.password}</Text>
-            )}
           </FormControl>
-          <FormControl mb={4} isInvalid={error.confirmPassword}>
-            <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
-            <InputGroup>
-              <Input
-                value={data.confirmPassword}
-                id="confirmPassword"
-                type={showPassword ? "text" : "password"}
-                placeholder="Confirm your password"
-                name="confirmPassword"
-                onChange={handleChange}
-                borderRadius="md"
-              />
-              <InputRightElement>
-                <IconButton
-                  h="1.75rem"
-                  size="sm"
-                  onClick={() => setShowPassword(!showPassword)}
-                  icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
-                />
-              </InputRightElement>
-            </InputGroup>
-            {error.confirmPassword && (
-              <Text color="red.500">{error.confirmPassword}</Text>
-            )}
+          <FormControl id="phone" isRequired>
+            <FormLabel fontSize="sm">Phone Number</FormLabel>
+            <Input
+              placeholder="Enter student phone number"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              size="sm"
+              height="35px"
+            />
+          </FormControl>
+          <FormControl id="address" isRequired>
+            <FormLabel fontSize="sm">Address</FormLabel>
+            <Input
+              placeholder="Enter student address"
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              size="sm"
+              height="35px"
+            />
           </FormControl>
           <Button
             type="submit"
-            w="full"
             colorScheme="teal"
-            borderRadius="md"
-            mt={4}
+            width="auto"
+            size="sm"
+            height="35px"
           >
-            Signup
+            Sign Up
           </Button>
-          <FormControl mt={4} textAlign="center">
-            <ChakraLink href="/login" color="teal.500" fontWeight="bold">
-              Already have an account? Login here.
-            </ChakraLink>
-          </FormControl>
-        </form>
-      </Box>
-    </Grid>
+        </VStack>
+      </form>
+    </Box>
   );
-}
+};
 
 export default Signup;

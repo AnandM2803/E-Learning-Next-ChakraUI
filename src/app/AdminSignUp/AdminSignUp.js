@@ -175,11 +175,6 @@ function AdminSignUp() {
           >
             Signup
           </Button>
-          <FormControl mt={4} textAlign="center">
-            <ChakraLink href="/login" color="teal.500" fontWeight="bold">
-              Already have an account? Login here.
-            </ChakraLink>
-          </FormControl>
         </form>
       </Box>
     </Grid>

@@ -1,24 +1,34 @@
-'use client'
-import { useState } from 'react';
-import axios from 'axios';
+"use client";
+import { useState } from "react";
+import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Box, Button, FormControl, FormLabel, Input, useToast, } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  useToast,
+} from "@chakra-ui/react";
 
 function AdminLogin() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const toast = useToast();
   const handleLogin = async (e) => {
     e.preventDefault();
-  
-    console.log('Email:', email);
-    console.log('Password:', password);
-  
+
+    console.log("Email:", email);
+    console.log("Password:", password);
+
     try {
-      const response = await axios.post('http://localhost:5000/api/adminauth/adminlogin', { email, password });
-      console.log('Login successful', response.data);
-  
+      const response = await axios.post(
+        "http://localhost:5000/api/adminauth/adminlogin",
+        { email, password }
+      );
+      console.log("Login successful", response.data);
+
       toast({
         title: "Login successful.",
         description: "You have been logged in successfully.",
@@ -28,23 +38,31 @@ function AdminLogin() {
       });
       router.push("/screeningpage");
     } catch (error) {
-      console.error('Login failed', error);
+      console.error("Login failed", error);
       if (error.response) {
-        console.error('Error response:', error.response.data);
+        console.error("Error response:", error.response.data);
       }
-  
+
       toast({
         title: "Login failed.",
-        description: error.response?.data?.message || "Invalid email or password.",
+        description:
+          error.response?.data?.message || "Invalid email or password.",
         status: "error",
         duration: 5000,
         isClosable: true,
       });
     }
   };
-  
+
   return (
-    <Box maxW="md" mx="auto" p={5} borderWidth={1} borderRadius="lg" boxShadow="lg">
+    <Box
+      maxW="md"
+      mx="auto"
+      p={5}
+      borderWidth={1}
+      borderRadius="lg"
+      boxShadow="lg"
+    >
       <form onSubmit={handleLogin}>
         <FormControl id="email" mb={4} isRequired>
           <FormLabel>Email</FormLabel>
@@ -64,7 +82,9 @@ function AdminLogin() {
             placeholder="Enter your password"
           />
         </FormControl>
-        <Button colorScheme="teal" type="submit" width="full">Login</Button>
+        <Button colorScheme="teal" type="submit" width="full">
+          Login
+        </Button>
       </form>
     </Box>
   );

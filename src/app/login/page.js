@@ -16,6 +16,7 @@ function Login() {
     e.preventDefault();
 
     try {
+      console.log('Login data:', { email, password });
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       console.log('Login successful', response.data);
 
@@ -83,4 +84,3 @@ function Login() {
 }
 
 export default Login;
-

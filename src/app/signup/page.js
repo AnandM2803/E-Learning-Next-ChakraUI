@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputProps, InputRightElement, VStack, useToast, IconButton } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, useToast, IconButton } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const Signup = () => {
@@ -47,7 +47,7 @@ const Signup = () => {
           duration: 5000,
           isClosable: true,
         });
-        router.push('/login');
+        router.push('/');
       } else {
         const errorData = await response.json();
         toast({

@@ -1,26 +1,48 @@
-'use client'
-import {Box,Flex,Text } from "@chakra-ui/react";
+import { Box, Image, Text, Button, Heading, Stack, SimpleGrid,Flex } from '@chakra-ui/react';
+import Link from 'next/link';
+import Mentor from '../../../public/mentorlist';
 
-const tasks={
-    fontWeight: 'bold',
-  fontSize: '70px',
-  background: 'linear-gradient(90deg, #a53a1f, #2851ac)',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  textShadow: '4px 4px 6px rgba(0, 0, 0, 0.5)',
-  display:'grid',
-  placeItems:"center",
-  h:'80vh'
-}
-function Instructor() {
+const Instructors = () => {
+  const topMentors = Mentor
+    .filter((details) => details.ratings > 4.5)
+    .slice(0, 3);
+
   return (
-    
-      <Flex columnGap='10px'>
-        <Box rowGap='10px' display='flex' flexDirection='column'  w='100%' >
-        <Text sx={tasks}>Instructor</Text>
-        </Box>
-      </Flex>
+    <Box p="3" height={'87.5vh'}>
+      <Heading as="h1" mb="3" textAlign="left" fontSize={'25px'}>
+        Popular Instructors
+      </Heading>
+      <SimpleGrid columns={[1, 2, 3]} spacing="6">
+        {topMentors.map((details, index) => (
+          <Box key={index} borderWidth="1px"  overflow="hidden" backgroundColor="#fff" borderRadius="8px"
+          boxShadow="0 4px 12px rgba(0,0,0,0.1)">
+            <Image 
+              src={details.photoUrl} 
+              alt={`${details.mentorName}'s picture`} 
+              width="100%" 
+              height="190px" 
+              objectFit="cover" 
+            />
+            <Box p="4">
+              <Stack spacing="2">
+                <Heading size="md">{details.mentorName}</Heading>
+                <Text>Technology: {details.technologyName}</Text>
+                <Text>Rating: {details.ratings}</Text>
+                <Text>Location: {details.location}</Text>
+              </Stack>
+              <Flex justify="center" mt={4}>
+                <Link href="/instructor/mentors" passHref>
+                  <Button size="sm" bg="teal" color="white">
+                    Visit
+                  </Button>
+                </Link>
+              </Flex>
+            </Box>
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Box>
   );
-}
+};
 
-export default Instructor;
+export default Instructors;

@@ -59,11 +59,12 @@ const Courses = [
     chapterVideoLinks: [
       "https://www.youtube.com/watch?v=__mSgDEOyv8",
       "https://www.youtube.com/watch?v=wd639F9aKU0",
-      "https://www.youtube.com/watch?v=FTjtG3G86KY&list=PLB_Wd4-5SGAbcvGsLzncFCrh-Dyt7wr5F",
+      "https://www.youtube.com/watch?v=GowPe3iiqTs&ab_channel=HuXnWebDev",
       "https://www.youtube.com/watch?v=PtDIVU_tlo0",
       "https://www.youtube.com/watch?v=DenUCuq4G04",
       "https://www.youtube.com/watch?v=KkC_wYM_Co4",
       "https://www.youtube.com/watch?v=O-NGENb6LNg",
+      "https://www.youtube.com/watch?v=kuV_iAIDT5Y&ab_channel=DigitalCEO",
     ],
     tabCourseDescription:
       "Next.js empowers developers with server-side rendering, TypeScript support, and a robust ecosystem for building scalable, SEO-friendly web applications. It integrates effortlessly with React, offering advanced features like automatic optimization and fast refresh for rapid development cycles.",
@@ -110,7 +111,7 @@ const Courses = [
       "https://www.youtube.com/watch?v=dEBqbBtQtP8&list=PLgPJX9sVy92xsFOL909CyObpqx7FoCh1Y",
       "https://www.youtube.com/watch?v=gAI218HSK8s&list=PLx-q4INfd95G-wrEjKDAcTB1K-8n1sIiz",
       "https://www.youtube.com/watch?v=SPGrc6byv_Y",
-      "https://www.youtube.com/watch?v=5n8FKv19os0&list=PL_KegS2ON4s53FNSqgXFdictTzUbGjoO-",
+      "https://www.youtube.com/watch?v=5n8FKv19os0&list=PL_KegS2ON4s53FNSqgXFdictTzUbGjoO-&ab_channel=Desphixs",
     ],
     tabCourseDescription:
       "Learn Django, Python's premier web framework, to create robust web applications efficiently. This course covers from basic setup to advanced features like authentication and deployment",
@@ -256,7 +257,7 @@ const Courses = [
       "https://www.youtube.com/watch?v=F8qSKUwnQH0",
     ],
     tabCourseDescription:
-      "LNode.js is a powerful runtime environment that allows developers to execute JavaScript code outside of a web browser, making it ideal for server-side applications. It provides an event-driven, non-blocking I/O model that maximizes efficiency and scalability in handling concurrent operations. Node.js empowers developers to build fast, scalable network applications with ease, leveraging its extensive ecosystem of libraries and frameworks",
+      "Node.js is a powerful runtime environment that allows developers to execute JavaScript code outside of a web browser, making it ideal for server-side applications. It provides an event-driven, non-blocking I/O model that maximizes efficiency and scalability in handling concurrent operations. Node.js empowers developers to build fast, scalable network applications with ease, leveraging its extensive ecosystem of libraries and frameworks",
     tabCourseReviewe:
       "Node.js powers server-side JavaScript with its efficient, non-blocking I/O model, ideal for scalable applications. Its extensive ecosystem supports rapid development and makes it a crucial tool for modern web and network solutions",
     tabCourseDiscussion:

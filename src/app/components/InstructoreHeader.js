@@ -46,7 +46,7 @@ const InstructoreHeader = () => {
           />
           <Avatar onClick={handleAvatarClick} ml={{ base: "2", md: "4" }} boxSize={{ base: "30px", md: "40px" }}>
             <Image
-              src="/studentprof2.jpg"
+              src="/instructor1.jpg"
               alt="profile"
               style={{ borderRadius: "50%" }}
               width="100%"

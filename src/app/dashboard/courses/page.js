@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Text,
@@ -23,7 +23,6 @@ import {
   AiOutlineSortAscending,
   AiOutlineSortDescending,
 } from "react-icons/ai";
-import Courses from "../../../../public/courselist";
 import { addEnrolledCourses } from "@/lib/enrolledCourse/enrolledCourse";
 import { useDispatch } from "react-redux";
 import Carousel from "react-multi-carousel";
@@ -57,6 +56,7 @@ const CourseCard = ({
           style: "currency",
           currency: "INR",
         });
+        const imageUrl = `http://localhost:5000/${image}`;
 
   return (
     <Box
@@ -73,7 +73,7 @@ const CourseCard = ({
     >
       
         <Image
-          src={image}
+          src={imageUrl}
           alt={name}
           maxWidth="190px"
           height="80px"
@@ -125,14 +125,30 @@ const CourseCard = ({
 const CourseCards = () => {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState(null);
+  const [courses, setCourses] = useState([]); // State for fetched courses
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   const dispatch = useDispatch();
 
+  // Fetch data on component mount
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/course/getall");
+        const data = await response.json();
+        setCourses(data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
   const filteredCourses =
     filter === "all"
-      ? Courses
-      : Courses.filter((course) =>
+      ? courses
+      : courses.filter((course) =>
           filter === "paid"
             ? course.courseFees !== "0"
             : course.courseFees === "0"
@@ -268,16 +284,16 @@ const CourseCards = () => {
           {sortedCourses.map((course, index) => (
             <WrapItem key={index}>
               <CourseCard
-                id={course.id}
-                name={course.name}
-                ratings={course.ratings}
-                courseFees={course.courseFees}
+                id={course._id}
+                name={course.courseName}
+                ratings={course.courseRating}
+                courseFees={course.coursePrice}
                 author={course.author}
-                image={course.image}
+                image={course.courseImg}
                 description={course.description}
               />
             </WrapItem> 
-          ))}5
+          ))}
         </Wrap>   
 
       )}

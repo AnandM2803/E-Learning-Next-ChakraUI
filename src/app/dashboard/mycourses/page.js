@@ -70,7 +70,7 @@ const MyCourses = () => {
           itemClass="carousel-item-padding-5-px"
         >
           {selectedCourse.map((course, index) => (
-            <Box key={index} mr="15px"> {/* Adjust margin right for spacing */}
+            <Box key={index} mr="15px"> 
               <CourseCard
                 id={course.id}
                 name={course.name}
@@ -89,7 +89,6 @@ const MyCourses = () => {
       <Wrap spacing="30px" mt={4} justify="center">
         {selectedCourse.map((course, index) => (
           <WrapItem key={index} width={{ base: "250px", md: "200px" }}>
-            {/* Ensure each WrapItem has a width to control layout */}
             <CourseCard
               id={course.id}
               name={course.name}

@@ -24,7 +24,7 @@ const InstructorSideBar = () => {
   const boxcontainer = {
     w: isVisible && !isMobile ? "220px" : "80px",
     bg: "#C3DDFD",
-    color: "black"
+    color: "black",
   };
 
   const hamburgerStyles = {

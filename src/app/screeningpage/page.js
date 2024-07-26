@@ -44,7 +44,7 @@ function AccessPage() {
                 Admin
               </Button>
             </Link>
-            <Link href="#">
+            <Link href="/instructor">
               <Button
                 fontSize="1rem"
                 px="3"

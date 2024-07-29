@@ -21,7 +21,7 @@ const Courses = [
     tabCourseDescription:
       " Web development involves designing and building dynamic, responsive websites and applications. It encompasses coding, design, and problem-solving to create user-friendly online experiences.",
     tabCourseReviewe:
-      " Web development seamlessly blends creativity with technical skill to craft interactive online experiences.It requires continuous learning and adaptation to keep pace with evolving technologies",
+      " Web development seamlessly blends creativity with technical skill to craft interactive online experiences.It requires continuous learning and adaptation to keep pace with evolving technologies.",
     tabCourseDiscussion:
       "Web development is a dynamic field requiring proficiency in front-end and back-end technologies, supported by continuous learning from online courses and developer communities. Staying updated with evolving trends and best practices ensures proficiency in crafting modern, user-centric web experiences.",
     tabCourseResources:
@@ -87,7 +87,7 @@ const Courses = [
     chapter4VideoName: "Simple Project Using Next",
     chapter5Name: "TailWind CSS",
     chapter5VideoName: "TailWind CSS For beigneers",
-    chapter6Name: "Waether App",
+    chapter6Name: "Weather App",
     chapter6VideoName: "Weather App using NextJS",
     chapter7Name: "CRUD API",
     chapter7VideoName: "Simple CRUD API",
@@ -114,13 +114,13 @@ const Courses = [
       "https://www.youtube.com/watch?v=5n8FKv19os0&list=PL_KegS2ON4s53FNSqgXFdictTzUbGjoO-&ab_channel=Desphixs",
     ],
     tabCourseDescription:
-      "Learn Django, Python's premier web framework, to create robust web applications efficiently. This course covers from basic setup to advanced features like authentication and deployment",
+      "Learn Django, Python's premier web framework, to create robust web applications efficiently. This course covers from basic setup to advanced features like authentication and deployment.",
     tabCourseReviewe:
-      "Comprehensive Django course covering setup to advanced features like authentication and deployment, with hands-on projects for practical skill development and expert guidance",
+      "Comprehensive Django course covering setup to advanced features like authentication and deployment, with hands-on projects for practical skill development and expert guidance.",
     tabCourseDiscussion:
       "How has Djangos ecosystem evolved, and what are its current strengths compared to other web frameworks?.Share experiences or challenges encountered while learning or using Django in real-world projects.Discuss the importance of continuous learning and staying updated with Django latest features and best practices.",
     tabCourseResources:
-      "Django Documentation: [Official Docs](https://docs.djangoproject.com/en/stable/) | Django Girls Tutorial: [Build a Blog](https://tutorial.djangogirls.org/)",
+      "Django Documentation: [Official Docs](https://docs.djangoproject.com/en/stable/) | Django Girls Tutorial: [Build a Blog](https://tutorial.djangogirls.org/).",
 
     profName: "Dr. Kent C. Dodds",
     aboutCourseDescription:
@@ -162,13 +162,13 @@ const Courses = [
       "https://www.youtube.com/watch?v=5HUU3evBRsM",
     ],
     tabCourseDescription:
-      "Master TypeScript, a superset of JavaScript, to write more robust and maintainable code with advanced features like static typing and interfaces. This course covers fundamental syntax, TypeScript's powerful type system, and practical applications in modern web development. Gain expertise in building scalable applications with TypeScript's enhanced tooling and compatibility with JavaScript libraries",
+      "Master TypeScript, a superset of JavaScript, to write more robust and maintainable code with advanced features like static typing and interfaces. This course covers fundamental syntax, TypeScript's powerful type system, and practical applications in modern web development. Gain expertise in building scalable applications with TypeScript's enhanced tooling and compatibility with JavaScript libraries.",
     tabCourseReviewe:
-      "This TypeScript course offers a solid foundation for developers aiming to enhance their JavaScript skills with strong typing and modern features. With its practical approach and comprehensive curriculum, it equips learners to write cleaner, more maintainable code in TypeScript, suitable for scalable web applications",
+      "This TypeScript course offers a solid foundation for developers aiming to enhance their JavaScript skills with strong typing and modern features. With its practical approach and comprehensive curriculum, it equips learners to write cleaner, more maintainable code in TypeScript, suitable for scalable web applications.",
     tabCourseDiscussion:
-      "Compare TypeScript with other statically typed languages like Java or C#. What are the advantages and limitations of using TypeScript in web development?.Share challenges or best practices in adopting TypeScript within teams or transitioning from JavaScript to TypeScript.Discuss the future trends and advancements in TypeScript, such as new language features or improvements in tooling and ecosystem support",
+      "Compare TypeScript with other statically typed languages like Java or C#. What are the advantages and limitations of using TypeScript in web development?.Share challenges or best practices in adopting TypeScript within teams or transitioning from JavaScript to TypeScript.Discuss the future trends and advancements in TypeScript, such as new language features or improvements in tooling and ecosystem support.",
     tabCourseResources:
-      "TypeScript Documentation: [Official Docs](https://www.typescriptlang.org/docs/) | TypeScript Playground: [Try TypeScript](https://www.typescriptlang.org/play)",
+      "TypeScript Documentation: [Official Docs](https://www.typescriptlang.org/docs/) | TypeScript Playground: [Try TypeScript](https://www.typescriptlang.org/play).",
     profName: "Dr. Max Stoiber",
     aboutCourseDescription:
       "Master TypeScript, a superset of JavaScript, for writing scalable and maintainable code with advanced features like static typing and modern syntax. Explore practical applications in web development through hands-on projects and expert guidance.",
@@ -210,13 +210,13 @@ const Courses = [
       "https://www.youtube.com/watch?v=KOmGPNS-YM8",
     ],
     tabCourseDescription:
-      "Learn Python for Data Science, covering essential libraries like NumPy, pandas, and Matplotlib. Gain practical skills in data analysis, visualization, and machine learning through hands-on projects and real-world examples",
+      "Learn Python for Data Science, covering essential libraries like NumPy, pandas, and Matplotlib. Gain practical skills in data analysis, visualization, and machine learning through hands-on projects and real-world examples.",
     tabCourseReviewe:
-      "This Python for Data Science course offers a thorough introduction to key libraries and essential skills needed in the field. With a focus on practical application and real-world projects, it equips learners to handle data manipulation, visualization, and machine learning tasks effectively. Ideal for those looking to build a solid foundation in data science using Python",
+      "This Python for Data Science course offers a thorough introduction to key libraries and essential skills needed in the field. With a focus on practical application and real-world projects, it equips learners to handle data manipulation, visualization, and machine learning tasks effectively. Ideal for those looking to build a solid foundation in data science using Python.",
     tabCourseDiscussion:
-      "Why Python? Python simplicity and powerful libraries like NumPy, pandas, and scikit-learn make it ideal for data science. How do you use these tools in your projects?",
+      "Why Python? Python simplicity and powerful libraries like NumPy, pandas, and scikit-learn make it ideal for data science. How do you use these tools in your projects?.",
     tabCourseResources:
-      "Python for Data Science: [Official Docs](https://docs.python.org/3/tutorial/index.html), [NumPy](https://numpy.org/doc/stable/), [pandas](https://pandas.pydata.org/docs/), [Matplotlib](https://matplotlib.org/stable/contents.html), [scikit-learn](https://scikit-learn.org/stable/documentation.html)",
+      "Python for Data Science: [Official Docs](https://docs.python.org/3/tutorial/index.html), [NumPy](https://numpy.org/doc/stable/), [pandas](https://pandas.pydata.org/docs/), [Matplotlib](https://matplotlib.org/stable/contents.html), [scikit-learn](https://scikit-learn.org/stable/documentation.html).",
     profName: "Dr. Max Stoiber",
     aboutCourseDescription:
       "Master Python for Data Science, focusing on key libraries such as NumPy, pandas, and scikit-learn. Develop expertise in data manipulation, visualization, and machine learning with practical, hands-on projects",
@@ -257,13 +257,13 @@ const Courses = [
       "https://www.youtube.com/watch?v=F8qSKUwnQH0",
     ],
     tabCourseDescription:
-      "Node.js is a powerful runtime environment that allows developers to execute JavaScript code outside of a web browser, making it ideal for server-side applications. It provides an event-driven, non-blocking I/O model that maximizes efficiency and scalability in handling concurrent operations. Node.js empowers developers to build fast, scalable network applications with ease, leveraging its extensive ecosystem of libraries and frameworks",
+      "Node.js is a powerful runtime environment that allows developers to execute JavaScript code outside of a web browser, making it ideal for server-side applications. It provides an event-driven, non-blocking I/O model that maximizes efficiency and scalability in handling concurrent operations. Node.js empowers developers to build fast, scalable network applications with ease, leveraging its extensive ecosystem of libraries and frameworks.",
     tabCourseReviewe:
-      "Node.js powers server-side JavaScript with its efficient, non-blocking I/O model, ideal for scalable applications. Its extensive ecosystem supports rapid development and makes it a crucial tool for modern web and network solutions",
+      "Node.js powers server-side JavaScript with its efficient, non-blocking I/O model, ideal for scalable applications. Its extensive ecosystem supports rapid development and makes it a crucial tool for modern web and network solutions.",
     tabCourseDiscussion:
       "Node.js empowers developers with its efficient, event-driven architecture, making it ideal for building scalable network applications. With a vast ecosystem of modules and libraries, Node.js supports rapid development across diverse use cases, from web servers to IoT devices. Its non-blocking I/O model enhances performance by handling concurrent requests smoothly, ensuring high throughput and responsiveness.",
     TabCourseResources:
-      "Node.js: [Official Docs](https://nodejs.org/en/docs/), [Express.js](https://expressjs.com/), [Socket.io](https://socket.io/docs/), [MongoDB Node.js Driver](https://mongodb.github.io/node-mongodb-native/), [Mongoose](https://mongoosejs.com/docs/)",
+      "Node.js: [Official Docs](https://nodejs.org/en/docs/), [Express.js](https://expressjs.com/), [Socket.io](https://socket.io/docs/), [MongoDB Node.js Driver](https://mongodb.github.io/node-mongodb-native/), [Mongoose](https://mongoosejs.com/docs/).",
     profName: "Dr. Max Stoiber",
     aboutCourseDescription:
       "Node.js revolutionizes server-side JavaScript execution, enabling scalable, efficient, and non-blocking I/O operations, pivotal for building high-performance applications. Its robust ecosystem supports rapid development with diverse libraries and frameworks, making it a cornerstone for modern web and network solutions",
@@ -308,9 +308,9 @@ const Courses = [
     tabCourseReviewe:
       "Java is celebrated for its versatility, object-oriented approach, and robust ecosystem, making it a preferred choice for enterprise-level, mobile, and web application development. Its platform independence and extensive toolset underscore its importance in modern software engineering.",
     tabCourseDiscussion:
-      "Absolutely! What aspect of Java are you interested in discussing? We can explore its features, applications in various domains, performance optimizations, community support, or anything else that intrigues you about the language. Let me know where you would like to focus our discussion!",
+      "Absolutely! What aspect of Java are you interested in discussing? We can explore its features, applications in various domains, performance optimizations, community support, or anything else that intrigues you about the language. Let me know where you would like to focus our discussion!.",
     TabCourseResources:
-      "Java Programming: [Official Docs](https://docs.oracle.com/en/java/javase/17/docs/api/index.html), [Spring Framework](https://spring.io/projects/spring-framework), [Hibernate](https://hibernate.org/orm/documentation/5.5/), [JUnit](https://junit.org/junit5/docs/current/user-guide/), [Apache Maven](https://maven.apache.org/guides/index.html)",
+      "Java Programming: [Official Docs](https://docs.oracle.com/en/java/javase/17/docs/api/index.html), [Spring Framework](https://spring.io/projects/spring-framework), [Hibernate](https://hibernate.org/orm/documentation/5.5/), [JUnit](https://junit.org/junit5/docs/current/user-guide/), [Apache Maven](https://maven.apache.org/guides/index.html).",
     profName: "Dr. Max Stoiber",
     aboutCourseDescription:
       "Java is a versatile and reliable programming language renowned for its portability, object-oriented structure, and extensive ecosystem of frameworks and tools. It excels in enterprise-level development, mobile applications, and web services, making it a cornerstone in modern software engineering.",
@@ -357,7 +357,7 @@ const Courses = [
     tabCourseDiscussion:
       "Sure, what aspect of SQL or database management would you like to discuss? We can talk about different SQL implementations, database design principles, query optimization, or any specific topic you are interested in exploring further.",
     TabCourseResources:
-      "SQL: Essential guide covering syntax, queries, and database management. [Official SQL Documentation](https://www.sqltutorial.org/), [MySQL Documentation](https://dev.mysql.com/doc/), [PostgreSQL Documentation](https://www.postgresql.org/docs/)",
+      "SQL: Essential guide covering syntax, queries, and database management. [Official SQL Documentation](https://www.sqltutorial.org/), [MySQL Documentation](https://dev.mysql.com/doc/), [PostgreSQL Documentation](https://www.postgresql.org/docs/).",
     profName: "Dr. Max Stoiber",
     aboutCourseDescription:
       "SQL (Structured Query Language) is the cornerstone of database management, facilitating efficient data retrieval, manipulation, and administration across relational database systems.",
@@ -402,9 +402,9 @@ const Courses = [
     tabCourseReviewe:
       "Power BI, Microsofts robust business analytics tool, empowers users with intuitive data visualization, interactive reporting, and seamless integration across diverse data sources. It enables organizations to derive actionable insights, enhance decision-making processes, and drive business growth through data-driven strategies.",
     tabCourseDiscussion:
-      "Of course! What would you like to discuss? We can delve into topics related to Power BI, such as its features, capabilities, best practices for data visualization, integration with other tools, or anything else you are curious about. Let me know how I can assist you!",
+      "Of course! What would you like to discuss? We can delve into topics related to Power BI, such as its features, capabilities, best practices for data visualization, integration with other tools, or anything else you are curious about. Let me know how I can assist you!.",
     TabCourseResources:
-      "Power BI: Microsoft's business analytics tool for visualizing data and sharing insights. [Power BI Official Documentation](https://docs.microsoft.com/en-us/power-bi/), [Power BI Community](https://community.powerbi.com/), [Power BI Blog](https://powerbi.microsoft.com/blog/)",
+      "Power BI: Microsoft's business analytics tool for visualizing data and sharing insights. [Power BI Official Documentation](https://docs.microsoft.com/en-us/power-bi/), [Power BI Community](https://community.powerbi.com/), [Power BI Blog](https://powerbi.microsoft.com/blog/).",
     profName: "Dr. Max Stoiber",
     aboutCourseDescription:
       "Power BI by Microsoft transforms data into insightful visuals, fostering informed decision-making through interactive reports and dashboards.",
@@ -450,9 +450,9 @@ const Courses = [
     tabCourseReviewe:
       "Spring Boot revolutionizes Java development by providing a streamlined framework that simplifies setup, enhances productivity with defaults and embedded servers, and supports rapid deployment of scalable applications ideal for microservices and cloud environments.",
     tabCourseDiscussion:
-      "Absolutely! What would you like to discuss? Whether it is about Spring Boot, other frameworks, software development practices, or any specific topic within tech or beyond, feel free to dive in!",
+      "Absolutely! What would you like to discuss? Whether it is about Spring Boot, other frameworks, software development practices, or any specific topic within tech or beyond, feel free to dive in!.",
     TabCourseResources:
-      "Spring Boot: Accelerates Java application development with streamlined setup, powerful defaults, and embedded server capabilities. [Spring Boot Official Documentation](https://spring.io/projects/spring-boot), [Spring Boot Guides](https://spring.io/guides), [Spring Boot Blog](https://spring.io/blog)",
+      "Spring Boot: Accelerates Java application development with streamlined setup, powerful defaults, and embedded server capabilities. [Spring Boot Official Documentation](https://spring.io/projects/spring-boot), [Spring Boot Guides](https://spring.io/guides), [Spring Boot Blog](https://spring.io/blog).",
     profName: "Dr. Josh Long",
     aboutCourseDescription:
       "Spring Boot accelerates Java application development with streamlined setup, powerful defaults, and embedded server capabilities, fostering efficient creation of modern, scalable applications.",

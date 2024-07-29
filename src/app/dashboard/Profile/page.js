@@ -2,11 +2,12 @@
 import { Box, VStack, Flex, Text, Image, SimpleGrid, useMediaQuery } from "@chakra-ui/react";
 import UploadPic from "./UploadPic";
 import ProfileTabs from "@/app/components/ProfileTabs/ProfileTabs";
-import TextEditor from "./TextEditor/TextEditor";
+import { useProfile } from "@/app/components/ProfileContext";
 
 const ProfileDetails = () => {
   const [isMobile] = useMediaQuery("(max-width: 480px)");
   const [isTablet] = useMediaQuery("(min-width: 481px) and (max-width: 768px)");
+  const { profilePic, handleImageUpload } = useProfile();
 
   return (
     <Box p={2} bg="gray.50" borderRadius="md" boxShadow="md" h={'87vh'} mt={1} overflowY={isMobile ? 'scroll':'hidden'}>
@@ -31,12 +32,12 @@ const ProfileDetails = () => {
                 <Image
                   borderRadius="full"
                   boxSize="87px"
-                  src="/MyProfilePic.jpg"
-                  alt="Anand"
+                  src={profilePic}
+                  alt="Profile Picture"
                   mb={2}
                 />
                 <Box position="absolute" bottom={0} right={0}>
-                  <UploadPic />
+                  <UploadPic onImageUpload={handleImageUpload} />
                 </Box>
               </Box>
               <Text fontSize="13" fontWeight="bold">Ananda Kumar M</Text>
@@ -58,9 +59,7 @@ const ProfileDetails = () => {
             columnGap={isMobile ? '0' : isTablet ? '0' : '40px'} 
             h={isMobile ? 'auto' : isTablet ? 'auto' : '100%'}
           >
-            {/* profile container  */}
             <ProfileTabs />
-            
           </VStack>
         </Box>
       </Flex>

@@ -125,12 +125,10 @@ const CourseCard = ({
 const CourseCards = () => {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState(null);
-  const [courses, setCourses] = useState([]); // State for fetched courses
+  const [courses, setCourses] = useState([]);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
-  const dispatch = useDispatch();
-
-  // Fetch data on component mount
+  // const dispatch = useDispatch();
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -156,17 +154,17 @@ const CourseCards = () => {
 
   const sortedCourses = [...filteredCourses].sort((a, b) => {
     if (sort === "name-asc") {
-      return a.name.localeCompare(b.name);
+      return a.courseName.localeCompare(b.courseName);
     } else if (sort === "name-desc") {
-      return b.name.localeCompare(a.name);
+      return b.courseName.localeCompare(a.courseName);
     } else if (sort === "courseFees-asc") {
-      return parseFloat(a.courseFees) - parseFloat(b.courseFees);
+      return parseFloat(a.coursePrice) - parseFloat(b.coursePrice);
     } else if (sort === "courseFees-desc") {
-      return parseFloat(b.courseFees) - parseFloat(a.courseFees);
+      return parseFloat(b.coursePrice) - parseFloat(a.coursePrice);
     } else if (sort === "ratings-asc") {
-      return parseFloat(a.ratings) - parseFloat(b.ratings);
+      return parseFloat(a.courseRating) - parseFloat(b.courseRating);
     } else if (sort === "ratings-desc") {
-      return parseFloat(b.ratings) - parseFloat(a.ratings);
+      return parseFloat(b.courseRating) - parseFloat(a.courseRating);
     } else {
       return 0;
     }
@@ -268,13 +266,13 @@ const CourseCards = () => {
           {sortedCourses.map((course, index) => (
             <CarouselContainer key={index} id="carouselcontainer">
               <CourseCard
-                id={course.id}
-                name={course.name}
-                ratings={course.ratings}
-                courseFees={course.courseFees}
-                author={course.author}
-                image={course.image}
-                description={course.description}
+               id={course._id}
+               name={course.courseName}
+               ratings={course.courseRating}
+               courseFees={course.coursePrice}
+               author={course.author}
+               image={course.courseImg}
+               description={course.description}
               />
             </CarouselContainer>
           ))}

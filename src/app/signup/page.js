@@ -46,6 +46,7 @@ const Signup = () => {
           status: 'success',
           duration: 5000,
           isClosable: true,
+          position:'top'
         });
         router.push('/');
       } else {
@@ -56,6 +57,7 @@ const Signup = () => {
           status: 'error',
           duration: 5000,
           isClosable: true,
+          position:'top',
         });
       }
     } catch (error) {

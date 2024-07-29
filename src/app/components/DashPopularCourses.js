@@ -1,12 +1,26 @@
 'use client'
-
 import { Box, HStack, Text, Button, Image, Flex, useMediaQuery } from "@chakra-ui/react";
 import Link from 'next/link';
-import Courses from "../../../public/courselist";
+// import Courses from "../../../public/courselist";
+import { useState,useEffect } from "react";
 
 const DashPopularCourse = () => {
   const [isTablet] = useMediaQuery("(max-width: 768px)");
   const [isMobile] = useMediaQuery("(max-width: 480px)");
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/course/getall");
+        const data = await response.json();
+        setCourses(data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   return (
     <Box 
@@ -27,7 +41,7 @@ const DashPopularCourse = () => {
       </HStack>
       <Box overflowX="auto" maxW="100%" >
         <HStack spacing={4} minWidth="max-content" flexDirection={isMobile ? "column" : "row"}>
-          {Courses.slice(0,6).map((details, index) => (
+          {courses.slice(0,6).map((details, index) => (
             <Box 
               key={index}
               maxW={isMobile ? "100%" : "200px"}
@@ -39,12 +53,12 @@ const DashPopularCourse = () => {
               flexShrink={0}
               mb={isMobile ? 4 : 0}
             >
-              <Image src={details.image} alt={details.name} height="90px" width="100%" objectFit="cover" />
+              <Image src={`http://localhost:5000/${details.courseImg}`}  alt={details.courseName} height="90px" width="100%" objectFit="cover" />
               <Flex p={2} direction="column" align="center" justify="space-between" h="full">
                 <Box>
-                  <Text fontWeight="bold" fontSize="sm" mt={2} mb={1}>{details.name}</Text>
-                  <Text fontSize="sm">Ratings: {details.ratings}</Text>
-                  <Text fontSize="sm">Course Fees: {details.courseFees}</Text>
+                  <Text fontWeight="bold" fontSize="sm" mt={2} mb={1}>{details.courseName}</Text>
+                  <Text fontSize="sm">Ratings: {details.courseRating}</Text>
+                  <Text fontSize="sm">Course Fees: {details.coursePrice}</Text>
                 </Box>
                 <Link href="/dashboard/courses">
                   <Button size="sm" mt={2} bg="teal">Visit</Button>

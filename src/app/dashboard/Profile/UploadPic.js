@@ -13,12 +13,23 @@ import {
   useMediaQuery
 } from '@chakra-ui/react'
 import { FaCamera } from "react-icons/fa";
+import { useState } from 'react';
 
-function UploadPic() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+function UploadPic({ onImageUpload }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
- 
-  const [isMobile] = useMediaQuery("(max-width: 768px)")
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        onImageUpload(e.target.result);
+      };
+      reader.readAsDataURL(file);
+      onClose();
+    }
+  };
 
   return (
     <>
@@ -30,7 +41,7 @@ function UploadPic() {
           <ModalHeader>Upload Picture</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Input type='file' placeholder='upload Picture' size={isMobile ? 'xs' : 'sm'} />
+            <Input type='file' accept='image/*' onChange={handleFileChange} size={isMobile ? 'xs' : 'sm'} />
           </ModalBody>
 
           <ModalFooter>
@@ -41,7 +52,7 @@ function UploadPic() {
         </ModalContent>
       </Modal>
     </>
-  )
+  );
 }
 
 export default UploadPic;

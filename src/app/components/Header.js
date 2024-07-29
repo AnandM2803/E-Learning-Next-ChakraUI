@@ -1,40 +1,35 @@
 "use client";
-import { useState } from "react";
-import { Box, Flex, Avatar, IconButton, Button, Image, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Avatar, IconButton, Button, useMediaQuery } from "@chakra-ui/react";
 import { BellIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useProfile } from "./ProfileContext";
 
 const Header = () => {
   const router = useRouter();
   const [showLogoutButton, setShowLogoutButton] = useState(false);
-  const [isMobile] = useMediaQuery("(max-width: 768px)"); 
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const { profilePic } = useProfile();
 
   const handleAvatarClick = () => {
-    setShowLogoutButton((prev) => !prev); 
+    setShowLogoutButton((prev) => !prev);
   };
 
   const handleLogout = () => {
     router.push("/");
     setShowLogoutButton(false);
   };
-  
 
   return (
     <Box bg="#C3DDFD" color="white" p={{ base: "2", md: "4" }}>
       <Flex justify="space-between" align="center" flexDirection={{ base: "column", md: "row" }}>
         {/* Logo section */}
-        {!isMobile && ( 
+        {!isMobile && (
           <Flex justify="center" align="center" mb={{ base: "4", md: "0" }}>
-            <Avatar boxSize={{ base: "30px", md: "40px" }}>
-              <Image
-                src="/logo.png"
-                alt="logo"
-                style={{ width: "100%", height: "100%", borderRadius: "50%" }}
-              />
-            </Avatar>
+            <Avatar src="/logo.png" boxSize={{ base: "30px", md: "40px" }} />
           </Flex>
         )}
-        
+
         {/* Notification and profile section */}
         <Flex align="center">
           <IconButton
@@ -44,15 +39,12 @@ const Header = () => {
             aria-label="Notification"
             mr={{ base: "2", md: "4" }}
           />
-          <Avatar onClick={handleAvatarClick} ml={{ base: "2", md: "4" }} boxSize={{ base: "30px", md: "40px" }}>
-            <Image
-              src="/studentprof2.jpg"
-              alt="profile"
-              style={{ borderRadius: "50%" }}
-              width="100%"
-              height="100%"
-            />
-          </Avatar>
+          <Avatar
+            onClick={handleAvatarClick}
+            ml={{ base: "2", md: "4" }}
+            src={profilePic}
+            boxSize={{ base: "30px", md: "40px" }}
+          />
           {showLogoutButton && (
             <Button ml={{ base: "2", md: "4" }} onClick={handleLogout} colorScheme="pink" size={{ base: "sm", md: "md" }}>
               Logout

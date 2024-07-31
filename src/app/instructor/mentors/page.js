@@ -69,7 +69,7 @@ function Mentors() {
               </Flex>
               <Flex align="center" mb={2}>
                 <SlCalender />
-                <Text ml={2}>{details.days}</Text>
+                <Text ml={2}>{details.day}</Text>
               </Flex>
               <Flex align="center" mb={2}>
                 <MdOutlinePriceChange />

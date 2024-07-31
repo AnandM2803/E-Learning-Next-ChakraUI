@@ -46,7 +46,7 @@ const Header = () => {
             boxSize={{ base: "30px", md: "40px" }}
           />
           {showLogoutButton && (
-            <Button ml={{ base: "2", md: "4" }} onClick={handleLogout} colorScheme="pink" size={{ base: "sm", md: "md" }}>
+            <Button ml={{ base: "2", md: "4" }} onClick={handleLogout} colorScheme="blue" size={{ base: "sm", md: "md" }}>
               Logout
             </Button>
           )}

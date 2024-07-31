@@ -34,7 +34,7 @@ import {
   _hover={{ bg: "#2D3748", transform: "scale(1.05)" }}
   _active={{ bg: "#1A202C" }}
   _focus={{ outline: "none" }}
-  w={{ base: "full", md: "auto" }}
+  w={{ base: "auto", md: "auto" }}
   m={{ base: 2, md: 4 }}
 >
   <Icon as={SiGnuprivacyguard} mr={2} />

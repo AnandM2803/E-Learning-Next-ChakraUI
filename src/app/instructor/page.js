@@ -14,7 +14,7 @@ const Instructors = () => {
       </Heading>
       <SimpleGrid columns={[1, 2, 3]} spacing="6">
         {topMentors.map((details, index) => (
-          <Box key={index} borderWidth="1px"  overflow="hidden" backgroundColor="#fff" borderRadius="8px"
+          <Box key={index} borderWidth="2px"  overflow="hidden" backgroundColor="#fff" borderRadius="8px"
           boxShadow="0 4px 12px rgba(0,0,0,0.1)">
             <Image 
               src={details.photoUrl} 

@@ -19,6 +19,7 @@ function Login() {
       console.log('Login data:', { email, password });
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       console.log('Login successful', response.data);
+      localStorage.setItem("studentData",JSON.stringify(response.data))
 
       // success login
       toast({
@@ -27,6 +28,7 @@ function Login() {
         status: "success",
         duration: 5000,
         isClosable: true,
+        position:'top'
       });
       router.push("/dashboard");
     } catch (error) {
@@ -42,6 +44,7 @@ function Login() {
         status: "error",
         duration: 5000,
         isClosable: true,
+        position:'top'
       });
     }
   };

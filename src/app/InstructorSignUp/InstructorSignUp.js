@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputRightElement,
   IconButton,
+  useToast
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
@@ -27,6 +28,7 @@ function InstructorSignUp() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState({});
+  const toast = useToast();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,7 +58,14 @@ function InstructorSignUp() {
         confirmPassword: "",
       });
 
-      alert("Form Submitted Successfully");
+      toast({
+        title: "Login successful.",
+        description: "You have been logged in successfully.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position:'top'
+      });
       router.push('/login');
     }
   };

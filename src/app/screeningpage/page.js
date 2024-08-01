@@ -11,8 +11,10 @@ function AccessPage() {
   return (
     <Grid
       bg="#F0EBE3"
-      minH="100vh"
+      h="97vh"
       placeItems="center"
+      bgImage={'/landingnew.png'}
+      bgSize={'cover'}
     >
       <Box
         textAlign="center"

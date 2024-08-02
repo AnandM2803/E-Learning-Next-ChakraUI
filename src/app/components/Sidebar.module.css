@@ -1,7 +1,7 @@
 .sidelink a {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     padding: 4px;
     border-radius: 9px 4px;
     transition: border 0.3s ease, background-color 0.3s ease;

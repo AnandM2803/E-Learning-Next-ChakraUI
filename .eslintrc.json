@@ -1,6 +1,9 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "eslint-rule-name": "off"
+    "eslint-rule-name": "off",
+    "react-hooks/rules-of-hooks": "warn",
+    "no-unused-vars": "off", 
+    "some-other-rule": "error" 
   }
 }

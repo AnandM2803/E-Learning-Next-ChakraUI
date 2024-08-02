@@ -1,18 +1,44 @@
-'use client'
-import React, { Suspense } from "react";
+"use client";
+import React, { useState, useEffect, Suspense } from "react";
 import ReactPlayer from "react-player";
 import { Text, useMediaQuery } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
-import Courses from "../../../../../public/courselist";
 import { useSearchParams } from "next/navigation";
 
 const VideoPlayer = () => {
-  const [isMobile] = useMediaQuery("(max-width: 768px)"); 
+  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const searchparams = useSearchParams();
-  const courseId = searchparams.get("id");
-  const chapter = searchparams.get("chapter");
-  const course = Courses.find((course) => course.id === courseId);
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/course/getall");
+        const data = await response.json();
+        console.log("Fetched courses:", data);
+        setCourses(data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  const searchParams = useSearchParams();
+  const courseId = searchParams.get("id");
+  const chapter = searchParams.get("chapter");
+  const course = courses.find((course) => course._id === courseId);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!course) {
+    return <div>No course found</div>;
+  }
 
   const selectedCard =
     course.chapterVideoLinks[Number(chapter) - 1] || course.videoUrl;
@@ -20,8 +46,8 @@ const VideoPlayer = () => {
   return (
     <ReactPlayer
       url={selectedCard}
-      width={isMobile ? "100%" : "auto"} 
-      height={isMobile ? "auto" : "100%"} 
+      width={isMobile ? "100%" : "auto"}
+      height={isMobile ? "auto" : "100%"}
       controls={true}
       style={{ borderRadius: "8px" }}
     />

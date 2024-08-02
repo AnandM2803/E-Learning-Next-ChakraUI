@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from "next/navigation";
-import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputProps, InputRightElement, useToast, IconButton } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
+import { Box, Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, IconButton, useToast } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 function Login() {
@@ -16,20 +16,30 @@ function Login() {
     e.preventDefault();
 
     try {
-      console.log('Login data:', { email, password });
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      console.log('Login successful', response.data);
-      localStorage.setItem("studentData",JSON.stringify(response.data))
+      const { token, student } = response.data;
 
-      // success login
+      console.log('Login response:', response.data); // Debugging line
+
+      // Store the token and student data in localStorage
+      localStorage.setItem("token", token);
+      localStorage.setItem("student", JSON.stringify(student));
+
+      // Verify the data stored in localStorage
+      console.log('Stored token in localStorage:', localStorage.getItem('token'));
+      console.log('Stored student in localStorage:', localStorage.getItem('student'));
+
+      // Display success toast notification
       toast({
         title: "Login successful.",
         description: "You have been logged in successfully.",
         status: "success",
         duration: 5000,
         isClosable: true,
-        position:'top'
+        position: 'top'
       });
+
+      // Redirect to the dashboard
       router.push("/dashboard");
     } catch (error) {
       console.error('Login failed', error);
@@ -37,14 +47,14 @@ function Login() {
         console.error('Error response:', error.response.data);
       }
 
-      //login error
+      // Display error toast notification
       toast({
         title: "Login failed.",
         description: error.response?.data?.message || "Invalid email or password.",
         status: "error",
         duration: 5000,
         isClosable: true,
-        position:'top'
+        position: 'top'
       });
     }
   };

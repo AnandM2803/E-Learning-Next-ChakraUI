@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState, Suspense,useEffect } from "react";
 import {
   Box,
   Flex,
@@ -14,9 +14,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-import { MdOutlineSaveAlt } from "react-icons/md";
 import { useSearchParams } from "next/navigation";
-import Courses from "../../../../../public/courselist";
+
 import CourseChapter from "@/app/components/CourseChapter";
 import ShareIcon from "../shareicons/ShareIcons";
 import TextEditor from "../../Profile/TextEditor/TextEditor";
@@ -24,12 +23,35 @@ import TextEditor from "../../Profile/TextEditor/TextEditor";
 const ReactProjectDescription = ({ children }) => {
   const [tabIndex, setTabIndex] = useState(0);
   const searchparams = useSearchParams();
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const selectedcourse = Courses.find(
-    (course) => course.id === searchparams.get("id")
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/course/getall");
+        const data = await response.json();
+        console.log("Fetched courses:", data);
+        setCourses(data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  const selectedCourse = courses.find(
+    (course) => course._id === searchparams.get("id")
   );
 
-  if (!selectedcourse) {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!selectedCourse) {
     return <Heading>Nothing to See</Heading>;
   }
 
@@ -50,10 +72,10 @@ const ReactProjectDescription = ({ children }) => {
             <Flex mb={1} alignItems="center" width="100%" h="fit-content">
               <Box flex="1">
                 <Box fontWeight="bold" fontSize="20px">
-                  {selectedcourse.name}
+                  {selectedCourse.courseName}
                 </Box>
                 <Box fontSize="10px" color="gray">
-                  {selectedcourse.profName}
+                  {selectedCourse.author}
                 </Box>
               </Box>
               <Flex position="relative">
@@ -145,7 +167,7 @@ const ReactProjectDescription = ({ children }) => {
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>{selectedcourse.tabCourseDescription}</p>
+                  <p>{selectedCourse.tabCourseDescription}</p>
                 </TabPanel>
                 <TabPanel
                   backgroundColor="#fff"
@@ -159,14 +181,14 @@ const ReactProjectDescription = ({ children }) => {
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>{selectedcourse.tabCourseDiscussion}</p>
+                  <p>{selectedCourse.tabCourseDiscussion}</p>
                 </TabPanel>
                 <TabPanel
                   backgroundColor="#fff"
                   borderRadius="8px"
                   boxShadow="0 4px 12px rgba(0,0,0,0.1)"
                 >
-                  <p>{selectedcourse.tabCourseResources}</p>
+                  <p>{selectedCourse.tabCourseResources}</p>
                 </TabPanel>
               </TabPanels>
             </Tabs>
@@ -197,7 +219,7 @@ const ReactProjectDescription = ({ children }) => {
                   alt="profile image"
                   style={{
                     borderRadius: "50%",
-                    width: "200px",
+                    width: "170px",
                     height: "60px",
                     marginBottom: "10px",
                   }}
@@ -205,10 +227,10 @@ const ReactProjectDescription = ({ children }) => {
               </Box>
               <Box>
                 <Box fontSize="15px" fontWeight="bold" color="gray">
-                  {selectedcourse.profName}
+                  {selectedCourse.author}
                 </Box>
                 <Box fontSize="13px" color="black">
-                  {selectedcourse.aboutCourseDescription}
+                  React is onep source Javascript liberary.To develop web application
                 </Box>
               </Box>
             </Flex>

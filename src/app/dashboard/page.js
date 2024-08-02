@@ -2,7 +2,6 @@
 import { Box, Flex, useMediaQuery } from '@chakra-ui/react';
 import DashTopCard from '../components/DashTopCard';
 import MyProgressChart from '../components/MyProgressChart';
-// import DashPopularLessons from '../components/DashPopularLessons';
 import DashAccordion from '../components/DashAccordion';
 import DashPopularCourse from '../components/DashPopularCourses';
 

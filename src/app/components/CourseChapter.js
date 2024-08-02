@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   ChakraProvider,
   Box,
@@ -55,8 +55,35 @@ const CourseChapter = () => {
   const pathName = usePathname();
   const id = useSearchParams().get("id");
   const searchparams=useSearchParams();
-  const selecteCourse=Courses.find((courses) =>courses.id===searchparams.get('id'));
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/course/getall");
+        const data = await response.json();
+        console.log("Fetched courses:", data);
+        setCourses(data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  const selectedCourse = courses.find((course) => course._id === id);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!selectedCourse) {
+    return <div>No course found</div>;
+  }
   const scrollbarwidthset = {
     "&::-webkit-scrollbar": {
       width: "3px",
@@ -75,7 +102,7 @@ const CourseChapter = () => {
         padding={{ base: "2", md: "4" }}
         css={scrollbarwidthset}
       >
-        <Accordion chapterName={selecteCourse.chapter1Name}>
+        <Accordion chapterName={selectedCourse.chapter1Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=1`}
             display="flex"
@@ -86,10 +113,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter1VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter1VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter2Name}>
+        <Accordion chapterName={selectedCourse.chapter2Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=2`}
             display="flex"
@@ -100,10 +127,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter2VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter2VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter3Name}>
+        <Accordion chapterName={selectedCourse.chapter3Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=3`}
             display="flex"
@@ -114,10 +141,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"  
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter3VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter3VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter4Name}>
+        <Accordion chapterName={selectedCourse.chapter4Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=4`}
             display="flex"
@@ -128,10 +155,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter4VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter4VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter5Name}>
+        <Accordion chapterName={selectedCourse.chapter5Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=5`}
             display="flex"
@@ -142,10 +169,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter5VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter5VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter6Name}>
+        <Accordion chapterName={selectedCourse.chapter6Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=6`}
             display="flex"
@@ -156,10 +183,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter6VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter6VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter7Name}>
+        <Accordion chapterName={selectedCourse.chapter7Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=7`}
             display="flex"
@@ -170,10 +197,10 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter7VideoName}</Text>
+            <Text ml="2">{selectedCourse.chapter7VideoName}</Text>
           </ChakraLink>
         </Accordion>
-        <Accordion chapterName={selecteCourse.chapter8Name}>
+        <Accordion chapterName={selectedCourse.chapter8Name}>
           <ChakraLink
             href={`${pathName}?id=${id}&chapter=8`}
             display="flex"
@@ -184,21 +211,7 @@ const CourseChapter = () => {
             boxShadow="0 4px 12px rgba(0,0,0,0.1)"
           >
             <PiVideoFill />
-            <Text ml="2">{selecteCourse.chapter8VideoName}</Text>
-          </ChakraLink>
-        </Accordion>
-        <Accordion chapterName="Chapter 9">
-          <ChakraLink
-            href={`${pathName}?id=${id}&chapter=9`}
-            display="flex"
-            alignItems="center"
-            _hover={{ textDecoration: "none", color: "blue.500" }}
-            backgroundColor="#fff"
-            borderRadius="8px"
-            boxShadow="0 4px 12px rgba(0,0,0,0.1)"
-          >
-            <PiVideoFill />
-            <Text ml="2">Watch Chapter 9</Text>
+            <Text ml="2">{selectedCourse.chapter8VideoName}</Text>
           </ChakraLink>
         </Accordion>
         

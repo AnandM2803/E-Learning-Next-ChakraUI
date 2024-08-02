@@ -18,7 +18,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 import {
-  AiFillStar,
   AiOutlineFilter,
   AiOutlineSortAscending,
   AiOutlineSortDescending,
@@ -93,13 +92,6 @@ const CourseCard = ({
             <Text fontSize="xs" color="gray">
               {ratings}
             </Text>
-            {/* {[...Array(5)].map((_, i) => (
-              <AiFillStar
-                key={i}
-                size="12px"
-                color={i < Math.round(ratings) ? "teal" : "gray"}
-              />
-            ))} */}
           </HStack>
           <Text fontSize="xs" fontWeight="bold">
             {formattedFees}
@@ -110,7 +102,6 @@ const CourseCard = ({
           <Button
             size="xs"
             bg='#C3DDFD'
-            // colorScheme="#C3DDFD"
             mt="2px"
             onClick={handleEnrollClick}
             ml={'50px'}
@@ -128,7 +119,6 @@ const CourseCards = () => {
   const [courses, setCourses] = useState([]);
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
-  // const dispatch = useDispatch();
   useEffect(() => {
     const fetchCourses = async () => {
       try {

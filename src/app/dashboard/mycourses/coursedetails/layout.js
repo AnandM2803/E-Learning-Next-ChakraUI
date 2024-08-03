@@ -12,6 +12,7 @@ import {
   Text,
   Heading,
   Image,
+  Avatar
 } from "@chakra-ui/react";
 
 import { useSearchParams } from "next/navigation";
@@ -213,17 +214,12 @@ const ReactProjectDescription = ({ children }) => {
               About the Course
             </Box>
             <Flex alignItems="center" rowGap="5px">
-              <Box mr={2}>
-                <Image
-                  src="/profile2.jpg"
-                  alt="profile image"
-                  style={{
-                    borderRadius: "50%",
-                    width: "170px",
-                    height: "60px",
-                    marginBottom: "10px",
-                  }}
-                />
+              <Box mr={2} width={'fit-content'}>
+                <Avatar
+            src="/profile2.jpg"
+            boxSize={{ base: "45px", md: "55px" }}
+            mb={'10px'}
+          />
               </Box>
               <Box>
                 <Box fontSize="15px" fontWeight="bold" color="gray">

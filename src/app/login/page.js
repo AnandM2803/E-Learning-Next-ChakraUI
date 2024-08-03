@@ -19,13 +19,11 @@ function Login() {
       const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       const { token, student } = response.data;
 
-      console.log('Login response:', response.data); // Debugging line
+      console.log('Login response:', response.data); 
 
-      // Store the token and student data in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("student", JSON.stringify(student));
 
-      // Verify the data stored in localStorage
       console.log('Stored token in localStorage:', localStorage.getItem('token'));
       console.log('Stored student in localStorage:', localStorage.getItem('student'));
 

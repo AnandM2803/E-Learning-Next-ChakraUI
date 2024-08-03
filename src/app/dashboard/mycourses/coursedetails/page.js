@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 const VideoPlayer = () => {
   const [isMobile] = useMediaQuery("(max-width: 768px)");
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -19,9 +19,7 @@ const VideoPlayer = () => {
         setCourses(data);
       } catch (error) {
         console.error("Error fetching courses:", error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchCourses();
@@ -32,9 +30,6 @@ const VideoPlayer = () => {
   const chapter = searchParams.get("chapter");
   const course = courses.find((course) => course._id === courseId);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (!course) {
     return <div>No course found</div>;

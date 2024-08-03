@@ -12,7 +12,7 @@ import {
 import { ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { usePathname, useSearchParams } from "next/navigation";
 import { PiVideoFill } from "react-icons/pi";
-import Courses from "../../../public/courselist";
+
 
 const Accordion = ({ chapterName, children }) => {
   const [isActive, setIsActive] = useState(false);
@@ -56,7 +56,6 @@ const CourseChapter = () => {
   const id = useSearchParams().get("id");
   const searchparams=useSearchParams();
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -67,9 +66,7 @@ const CourseChapter = () => {
         setCourses(data);
       } catch (error) {
         console.error("Error fetching courses:", error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchCourses();
@@ -77,9 +74,7 @@ const CourseChapter = () => {
 
   const selectedCourse = courses.find((course) => course._id === id);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+ 
 
   if (!selectedCourse) {
     return <div>No course found</div>;

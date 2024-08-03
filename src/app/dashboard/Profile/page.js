@@ -13,12 +13,12 @@ const ProfileDetails = () => {
 
   useEffect(() => {
     const studentData = localStorage.getItem('student');
-    console.log('Retrieved student data from localStorage:', studentData); // Debugging line
+    console.log('Retrieved student data from localStorage:', studentData); 
 
     if (studentData) {
       try {
         const parsedStudentData = JSON.parse(studentData);
-        console.log('Parsed student data:', parsedStudentData); // Debugging line
+        console.log('Parsed student data:', parsedStudentData); 
         setStudent(parsedStudentData);
       } catch (error) {
         console.error('Error parsing student data from localStorage:', error);

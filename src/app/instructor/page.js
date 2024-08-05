@@ -1,9 +1,27 @@
+'use client'
 import { Box, Image, Text, Button, Heading, Stack, SimpleGrid,Flex } from '@chakra-ui/react';
 import Link from 'next/link';
-import Mentor from '../../../public/mentorlist';
+// import Mentor from '../../../public/mentorlist';
+import { useState,useEffect } from 'react';
 
 const Instructors = () => {
-  const topMentors = Mentor
+
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/instructor/getall");
+        const data = await response.json();
+        setProfile(data);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+  const topMentors = profile
     .filter((details) => details.ratings > 4.5)
     .slice(0, 3);
 
@@ -17,7 +35,7 @@ const Instructors = () => {
           <Box key={index} borderWidth="2px"  overflow="hidden" backgroundColor="#fff" borderRadius="8px"
           boxShadow="0 4px 12px rgba(0,0,0,0.1)">
             <Image 
-              src={details.photoUrl} 
+              src={`http://localhost:5000/${details.photoUrl}`} 
               alt={`${details.mentorName}'s picture`} 
               width="100%" 
               height="190px" 

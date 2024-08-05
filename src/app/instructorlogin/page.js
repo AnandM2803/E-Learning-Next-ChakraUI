@@ -1,129 +1,95 @@
 "use client";
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import {
   Box,
-  Text,
-  Grid,
+  Button,
   FormControl,
   FormLabel,
-  Button,
   Input,
-  Link,
-  InputGroup,
-  InputRightElement,
-  IconButton,
+  useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 function InstructorLogin() {
   const router = useRouter();
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const toast = useToast();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setData({ ...data, [name]: value });
-  };
+    console.log("Email:", email);
+    console.log("Password:", password);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const validationError = {};
-    if (!data.email.trim()) {
-      validationError.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      validationError.email = "Please provide a valid email address";
-    }
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/instructorauth/instructorlogin",
+        { email, password }
+      );
+      console.log("Login successful", response.data);
 
-    if (!data.password.trim()) {
-      validationError.password = "Password is required";
-    } else if (!/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(data.password)) {
-      validationError.password = "Proper Password Required";
-    }
-
-    setError(validationError);
-    if (Object.keys(validationError).length === 0) {
-      setData({
-        email: "",
-        password: "",
+      toast({
+        title: "Login successful.",
+        description: "You have been logged in successfully.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
       });
-
-      alert("Logged in Successfully");
       router.push("/instructor");
-    }
-  };
+    } catch (error) {
+      console.error("Login failed", error);
+      if (error.response) {
+        console.error("Error response:", error.response.data);
+      }
 
-  const toggleShowPassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+      toast({
+        title: "Login failed.",
+        description:
+          error.response?.data?.message || "Invalid email or password.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
-    <Grid placeItems="center" bg="white">
-      <form
-        style={{
-          backgroundColor: "white",
-          padding: "20px",
-          borderRadius: "10px",
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-          maxWidth: "400px",
-          width: "100%",
-        }}
-        onSubmit={handleSubmit}
-      >
-        <FormControl mt={4}>
-          <FormLabel htmlFor="email">Email</FormLabel>
+    <Box
+      maxW="md"
+      mx="auto"
+      p={5}
+      borderWidth={1}
+      borderRadius="lg"
+      boxShadow="lg"
+    >
+      <form onSubmit={handleLogin}>
+        <FormControl id="email" mb={4} isRequired>
+          <FormLabel>Email</FormLabel>
           <Input
-            value={data.email}
-            id="email"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter instructor email"
-            name="email"
-            onChange={handleChange}
           />
-          {error.email && (
-            <Text as="span" color="red" mt={2}>
-              {error.email}
-            </Text>
-          )}
         </FormControl>
-        <FormControl mt={4}>
-          <FormLabel htmlFor="password">Password</FormLabel>
-          <InputGroup>
-            <Input
-              value={data.password}
-              id="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
-              name="password"
-              onChange={handleChange}
-            />
-            <InputRightElement width="4.5rem">
-              <IconButton
-                h="1.75rem"
-                size="sm"
-                onClick={toggleShowPassword}
-                icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
-              />
-            </InputRightElement>
-          </InputGroup>
-          {error.password && (
-            <Text as="span" color="red" mt={2}>
-              {error.password}
-            </Text>
-          )}
+        <FormControl id="password" mb={6} isRequired>
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+          />
         </FormControl>
-        <FormControl mt={6} align="center">
-          <Button type="submit" colorScheme="teal" w="full">
-            Login
-          </Button>
-        </FormControl>
+        <Button colorScheme="teal" type="submit" width="full">
+          Login
+        </Button>
       </form>
-    </Grid>
+    </Box>
   );
 }
 
 export default InstructorLogin;
+
+ 

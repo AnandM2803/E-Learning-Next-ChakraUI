@@ -39,7 +39,6 @@ function ProfileFormEdit() {
   });
 
   useEffect(() => {
-    // Extract student ID from localStorage
     const student = JSON.parse(localStorage.getItem('student'));
     const id = student ? student._id : null;
     setStudentId(id);
@@ -86,9 +85,6 @@ function ProfileFormEdit() {
         isClosable: true,
         position: "top"
       });
-
-      // Update localStorage with the new data
-      localStorage.setItem('student', JSON.stringify(response.data));
       
       onClose();
     } catch (error) {
